@@ -4,8 +4,10 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
 import { dockApps } from '#constants'
+import useWindowStore, { type WindowKey } from '#store/window'
 
 const Dock = () => {
+    const { windows, openWindow, closeWindow } = useWindowStore()
     const dockRef = useRef<HTMLDivElement | null>(null)
     const activeTweensRef = useRef<Map<Element, gsap.core.Tween>>(new Map())
 
@@ -87,8 +89,22 @@ const Dock = () => {
         }
     }, [])
 
-    const toggleApp = (_app: { id: string; canOpen: boolean }) => {
-        //TODO Implement app toggling logic
+    const toggleApp = (app: { id: string; canOpen: boolean }) => {
+        if (!app.canOpen) return
+
+        const windowKey = app.id as WindowKey
+        const window = windows[windowKey]
+
+        if (!window) {
+            console.error(`Window not found for app ${app.id}`)
+            return
+        }
+
+        if (window.isOpen) {
+            closeWindow(windowKey)
+        } else {
+            openWindow(windowKey)
+        }
     }
     return (
         <section id="dock">
