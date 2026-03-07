@@ -7,7 +7,7 @@ import { dockApps } from '#constants'
 
 const Dock = () => {
     const dockRef = useRef<HTMLDivElement | null>(null)
-    const activeTweensRef = useRef<gsap.core.Tween[]>([])
+    const activeTweensRef = useRef<Map<Element, gsap.core.Tween>>(new Map())
 
     useGSAP(() => {
         const dock = dockRef.current
@@ -28,10 +28,12 @@ const Dock = () => {
             })
         }
 
-        const trackTween = (tween: gsap.core.Tween) => {
-            activeTweensRef.current.push(tween)
+        const trackTween = (target: Element, tween: gsap.core.Tween) => {
+            activeTweensRef.current.set(target, tween)
             tween.eventCallback('onComplete', () => {
-                activeTweensRef.current = activeTweensRef.current.filter((t) => t !== tween)
+                if (activeTweensRef.current.get(target) === tween) {
+                    activeTweensRef.current.delete(target)
+                }
             })
         }
 
@@ -48,7 +50,7 @@ const Dock = () => {
                     duration: 0.2,
                     ease: 'power1.out',
                 })
-                trackTween(tween)
+                trackTween(icon, tween)
             })
         }
 
@@ -65,7 +67,7 @@ const Dock = () => {
                     duration: 0.3,
                     ease: 'power1.out',
                 })
-                trackTween(tween)
+                trackTween(icon, tween)
             })
         }
 
@@ -78,12 +80,14 @@ const Dock = () => {
             dock.removeEventListener('mousemove', handleMouseMove)
             dock.removeEventListener('mouseleave', resetIcons)
             window.removeEventListener('resize', computeIconCenters)
-            activeTweensRef.current.forEach((tween) => tween.kill())
-            activeTweensRef.current = []
+            activeTweensRef.current.forEach((tween) => {
+                tween.kill()
+            })
+            activeTweensRef.current.clear()
         }
     }, [])
 
-    const toggleApp = (app: { id: string; canOpen: boolean }) => {
+    const toggleApp = (_app: { id: string; canOpen: boolean }) => {
         //TODO Implement app toggling logic
     }
     return (
