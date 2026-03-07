@@ -17,7 +17,7 @@ const renderText = (text: string, className: string, baseWeight = 400) => {
     ))
 }
 
-const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_WEIGHTS, onTween: (tween: gsap.core.Tween) => void) => {
+const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_WEIGHTS, onTween: (target: Element, tween: gsap.core.Tween) => void) => {
     if (!container) return () => {}
 
     const letters = container.querySelectorAll('span')
@@ -43,7 +43,7 @@ const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_W
             ease: 'power2.out',
             fontVariationSettings: `'wght' ${weight}`,
         })
-        onTween(tween)
+        onTween(letter, tween)
         return tween
     }
 
@@ -77,13 +77,15 @@ const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_W
 const Welcome = () => {
     const titleRef = useRef(null)
     const subtitleRef = useRef(null)
-    const activeTweensRef = useRef<gsap.core.Tween[]>([])
+    const activeTweensRef = useRef<Map<Element, gsap.core.Tween>>(new Map())
 
     useGSAP(() => {
-        const trackTween = (tween: gsap.core.Tween) => {
-            activeTweensRef.current.push(tween)
+        const trackTween = (target: Element, tween: gsap.core.Tween) => {
+            activeTweensRef.current.set(target, tween)
             tween.eventCallback('onComplete', () => {
-                activeTweensRef.current = activeTweensRef.current.filter((t) => t !== tween)
+                if (activeTweensRef.current.get(target) === tween) {
+                    activeTweensRef.current.delete(target)
+                }
             })
         }
 
@@ -93,8 +95,10 @@ const Welcome = () => {
         return () => {
             titleCleanup()
             subTitleCleanup()
-            activeTweensRef.current.forEach((tween) => tween.kill())
-            activeTweensRef.current = []
+            activeTweensRef.current.forEach((tween) => {
+                tween.kill()
+            })
+            activeTweensRef.current.clear()
         }
     }, [])
 
