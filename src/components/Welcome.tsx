@@ -15,17 +15,23 @@ const renderText = (text: string, className: string, baseWeight = 400) => {
     ))
 }
 
-const setupTextHover = (container: any, type: keyof typeof FONT_WEIGHTS) => {
-    if (!container) return
+const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_WEIGHTS, onTween: (tween: gsap.core.Tween) => void) => {
+    if (!container) return () => {}
 
     const letters = container.querySelectorAll('span')
     const { min, max, default: base } = FONT_WEIGHTS[type]
 
-    const animateLetter = (letter: string, weight: any, duration = 0.25) => {
-        return gsap.to(letter, { duration, ease: 'power2.out', fontVariationSettings: `'wght' ${weight}` })
+    const animateLetter = (letter: HTMLElement, weight: number, duration = 0.25) => {
+        const tween = gsap.to(letter, {
+            duration,
+            ease: 'power2.out',
+            fontVariationSettings: `'wght' ${weight}`,
+        })
+        onTween(tween)
+        return tween
     }
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
         const { left } = container.getBoundingClientRect()
         const mouseX = e.clientX - left
         letters.forEach((letter) => {
@@ -53,14 +59,21 @@ const setupTextHover = (container: any, type: keyof typeof FONT_WEIGHTS) => {
 const Welcome = () => {
     const titleRef = useRef(null)
     const subtitleRef = useRef(null)
+    const activeTweensRef = useRef<gsap.core.Tween[]>([])
 
     useGSAP(() => {
-        const titleCleanup = setupTextHover(titleRef.current, 'title')
-        const subTitleCleanup = setupTextHover(subtitleRef.current, 'subtitle')
+        const trackTween = (tween: gsap.core.Tween) => {
+            activeTweensRef.current.push(tween)
+        }
+
+        const titleCleanup = setupTextHover(titleRef.current, 'title', trackTween)
+        const subTitleCleanup = setupTextHover(subtitleRef.current, 'subtitle', trackTween)
 
         return () => {
             titleCleanup()
             subTitleCleanup()
+            activeTweensRef.current.forEach((tween) => tween.kill())
+            activeTweensRef.current = []
         }
     }, [])
 
