@@ -2,6 +2,8 @@ import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
+gsap.registerPlugin(useGSAP)
+
 const FONT_WEIGHTS = {
     subtitle: { min: 100, max: 400, default: 100 },
     title: { min: 400, max: 900, default: 400 },
@@ -21,7 +23,21 @@ const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_W
     const letters = container.querySelectorAll('span')
     const { min, max, default: base } = FONT_WEIGHTS[type]
 
+    let cachedContainerLeft = 0
+    const cachedLetterCenters: number[] = []
+
+    const computeLetterCenters = () => {
+        const { left } = container.getBoundingClientRect()
+        cachedContainerLeft = left
+        cachedLetterCenters.length = 0
+        letters.forEach((letter) => {
+            const { left: l, width: w } = letter.getBoundingClientRect()
+            cachedLetterCenters.push(l - left + w / 2)
+        })
+    }
+
     const animateLetter = (letter: HTMLElement, weight: number, duration = 0.25) => {
+        gsap.killTweensOf(letter)
         const tween = gsap.to(letter, {
             duration,
             ease: 'power2.out',
@@ -32,11 +48,10 @@ const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_W
     }
 
     const handleMouseMove = (e: MouseEvent) => {
-        const { left } = container.getBoundingClientRect()
-        const mouseX = e.clientX - left
-        letters.forEach((letter) => {
-            const { left: l, width: w } = letter.getBoundingClientRect()
-            const distance = Math.abs(mouseX - (l - left + w / 2))
+        const mouseX = e.clientX - cachedContainerLeft
+        letters.forEach((letter, index) => {
+            const letterCenterX = cachedLetterCenters[index]
+            const distance = Math.abs(mouseX - letterCenterX)
             const intensity = Math.exp(-(distance ** 2) / 2000)
 
             animateLetter(letter, min + (max - min) * intensity)
@@ -48,11 +63,14 @@ const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_W
         })
     }
 
+    computeLetterCenters()
     container.addEventListener('mousemove', handleMouseMove)
     container.addEventListener('mouseleave', handleMouseLeave)
+    window.addEventListener('resize', computeLetterCenters)
     return () => {
         container.removeEventListener('mousemove', handleMouseMove)
         container.removeEventListener('mouseleave', handleMouseLeave)
+        window.removeEventListener('resize', computeLetterCenters)
     }
 }
 
@@ -64,6 +82,9 @@ const Welcome = () => {
     useGSAP(() => {
         const trackTween = (tween: gsap.core.Tween) => {
             activeTweensRef.current.push(tween)
+            tween.eventCallback('onComplete', () => {
+                activeTweensRef.current = activeTweensRef.current.filter((t) => t !== tween)
+            })
         }
 
         const titleCleanup = setupTextHover(titleRef.current, 'title', trackTween)
