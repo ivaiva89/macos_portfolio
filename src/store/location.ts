@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
-import { locations, type LocationRoot } from '#constants/location'
+import { locations, type FolderItem } from '#constants/location'
 
 interface LocationState {
-    activeLocation: LocationRoot | null
+    activeLocation: FolderItem | null
 }
 
 interface LocationActions {
-    setActiveLocation: (location: LocationRoot | null) => void
+    setActiveLocation: (location: FolderItem | null) => void
     resetActiveLocation: () => void
 }
 

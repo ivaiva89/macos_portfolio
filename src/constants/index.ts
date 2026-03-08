@@ -140,7 +140,7 @@ const WINDOW_CONFIG = {
         zIndex: INITIAL_Z_INDEX,
         data: null,
     },
-    txtfile: {
+    tstfile: {
         title: 'Text File',
         isOpen: false,
         zIndex: INITIAL_Z_INDEX,

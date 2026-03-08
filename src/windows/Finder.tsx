@@ -1,7 +1,7 @@
 import WindowControls from '#components/WindowControls'
 import { Search } from 'lucide-react'
 import WindowWrapper from '#hoc/WindowWrapper'
-import { type LocationItem, type LocationRoot, locations } from '#constants/location'
+import { type FolderItem, type LocationItem, locations } from '#constants/location'
 import useLocationStore from '#store/location'
 import clsx from 'clsx'
 import useWindowStore from '#store/window'
@@ -12,21 +12,22 @@ const Finder = () => {
 
     if (!activeLocation) return null
 
-    const openItem = (item: LocationItem) => {
-        if (item.kind === 'file') {
-            if (item.fileType === 'pdf') return openWindow('resume')
-            if (['fig', 'url'].includes(item.fileType) && item.href) return window.open(item.href, '_blank')
-        }
+    const isFolder = (item: LocationItem): item is FolderItem => item.kind === 'folder'
 
-        if (item.kind === 'folder') return setActiveLocation(item as LocationRoot)
+    const openItem = (item: LocationItem) => {
+        if (item.kind === 'folder') return setActiveLocation(item)
+        if (item.fileType === 'txt') return openWindow('tstfile', item)
+        if (item.fileType === 'pdf') return openWindow('resume')
+        if (item.fileType === 'img') return openWindow('imgfile', item)
+        if (['fig', 'url'].includes(item.fileType) && item.href) return window.open(item.href, '_blank')
     }
 
-    const renderList = (name: string, items: LocationItem[]) => (
+    const renderList = (name: string, items: FolderItem[]) => (
         <div>
             <h3>{name}</h3>
             <ul>
                 {items.map((item) => (
-                    <li key={item.id} className={clsx(item.id === activeLocation.id ? 'active' : 'not-active')} onClick={() => setActiveLocation(item as LocationRoot)}>
+                    <li key={item.id} className={clsx(item.id === activeLocation.id ? 'active' : 'not-active')} onClick={() => setActiveLocation(item)}>
                         <img src={item.icon} className="w-4" alt={item.name} />
                         <p className="text-sm font-medium truncate">{item.name}</p>
                     </li>
@@ -45,7 +46,7 @@ const Finder = () => {
             <div className="bg-white flex h-full">
                 <div className="sidebar">
                     {renderList('Favorites', Object.values(locations))}
-                    {renderList('My Projects', locations.work.children)}
+                    {renderList('My Projects', locations.work.children.filter(isFolder))}
                 </div>
 
                 <ul className="content">
