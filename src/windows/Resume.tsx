@@ -1,6 +1,7 @@
-import WindowWrapper from '#hoc/WindowWrapper'
-import WindowControls from '#components/WindowControls'
 import { Download } from 'lucide-react'
+
+import WindowWrapper from '#hoc/WindowWrapper'
+import { WindowControls } from '#components'
 
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'

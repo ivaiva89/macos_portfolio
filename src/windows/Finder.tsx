@@ -1,10 +1,10 @@
-import WindowControls from '#components/WindowControls'
 import { Search } from 'lucide-react'
-import WindowWrapper from '#hoc/WindowWrapper'
-import { type FolderItem, type LocationItem, locations } from '#constants/location'
-import useLocationStore from '#store/location'
 import clsx from 'clsx'
-import useWindowStore from '#store/window'
+
+import WindowWrapper from '#hoc/WindowWrapper'
+import { WindowControls } from '#components'
+import { type FolderItem, type LocationItem, locations } from '#constants/location'
+import { useLocationStore, useWindowStore } from '#store'
 
 const Finder = () => {
     const { openWindow } = useWindowStore()

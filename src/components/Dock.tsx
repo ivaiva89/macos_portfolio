@@ -4,7 +4,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
 import { dockApps, type WindowKey } from '#constants'
-import useWindowStore from '#store/window'
+import { useWindowStore } from '#store'
 
 type DockApp = { id: WindowKey; name: string; icon: string; canOpen: true } | { id: string; name: string; icon: string; canOpen: false }
 

@@ -1,4 +1,4 @@
-import useWindowStore, { type WindowKey } from '#store/window'
+import { useWindowStore, type WindowKey } from '#store'
 
 const WindowControls = ({ target }: { target: WindowKey }) => {
     const { closeWindow } = useWindowStore()

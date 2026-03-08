@@ -1,6 +1,6 @@
-import WindowControls from '#components/WindowControls'
+import { WindowControls } from '#components'
 import WindowWrapper from '#hoc/WindowWrapper'
-import useWindowStore from '#store/window'
+import { useWindowStore } from '#store'
 import type { FileItem } from '#constants/location'
 
 const Image = () => {

@@ -1,5 +1,6 @@
-import Navbar from '#components/Navbar'
-import Welcome from '#components/Welcome'
-import Dock from '#components/Dock'
+import Navbar from './Navbar'
+import Welcome from './Welcome'
+import Dock from './Dock'
+import WindowControls from './WindowControls.tsx'
 
-export { Welcome, Navbar, Dock }
+export { Welcome, Navbar, Dock, WindowControls }

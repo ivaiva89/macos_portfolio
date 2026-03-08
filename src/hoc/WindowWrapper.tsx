@@ -1,10 +1,10 @@
+import { type ComponentType, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { type ComponentType, useLayoutEffect } from 'react'
-import { useRef } from 'react'
-import useWindowStore from '#store/window'
-import type { WindowKey } from '#constants'
-import { useGSAP } from '@gsap/react'
 import { Draggable } from 'gsap/all'
+import { useGSAP } from '@gsap/react'
+
+import { useWindowStore } from '#store'
+import type { WindowKey } from '#constants'
 
 gsap.registerPlugin(useGSAP, Draggable)
 
