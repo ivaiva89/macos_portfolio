@@ -35,6 +35,33 @@ const navIcons = [
     },
 ]
 
+const techStack = [
+    {
+        category: 'Frontend',
+        items: ['React.js', 'Next.js', 'TypeScript'],
+    },
+    {
+        category: 'Mobile',
+        items: ['React Native', 'Expo'],
+    },
+    {
+        category: 'Styling',
+        items: ['Tailwind CSS', 'CSS'],
+    },
+    {
+        category: 'Backend',
+        items: ['Node.js', 'Express'],
+    },
+    {
+        category: 'Database',
+        items: ['PostgreSQL'],
+    },
+    {
+        category: 'Dev Tools',
+        items: ['Git', 'GitHub', 'Docker'],
+    },
+]
+
 const dockApps = [
     {
         id: 'finder',
@@ -74,19 +101,59 @@ const dockApps = [
     },
 ]
 
-export { navLinks, navIcons, dockApps }
-
 const INITIAL_Z_INDEX = 1000
 
 const WINDOW_CONFIG = {
-    finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    finder: {
+        title: 'Portfolio',
+        isOpen: false,
+        zIndex: INITIAL_Z_INDEX,
+        data: null,
+    },
+    safari: {
+        title: 'Articles',
+        isOpen: false,
+        zIndex: INITIAL_Z_INDEX,
+        data: null,
+    },
+    photos: {
+        title: 'Gallery',
+        isOpen: false,
+        zIndex: INITIAL_Z_INDEX,
+        data: null,
+    },
+    contact: {
+        title: 'Contact',
+        isOpen: false,
+        zIndex: INITIAL_Z_INDEX,
+        data: null,
+    },
+    terminal: {
+        title: 'Skills',
+        isOpen: false,
+        zIndex: INITIAL_Z_INDEX,
+        data: null,
+    },
+    resume: {
+        title: 'Resume',
+        isOpen: false,
+        zIndex: INITIAL_Z_INDEX,
+        data: null,
+    },
+    txtfile: {
+        title: 'Text File',
+        isOpen: false,
+        zIndex: INITIAL_Z_INDEX,
+        data: null,
+    },
+    imgfile: {
+        title: 'Image File',
+        isOpen: false,
+        zIndex: INITIAL_Z_INDEX,
+        data: null,
+    },
 }
 
-export { INITIAL_Z_INDEX, WINDOW_CONFIG }
+export type WindowKey = keyof typeof WINDOW_CONFIG
+
+export { navLinks, navIcons, techStack, dockApps, INITIAL_Z_INDEX, WINDOW_CONFIG }
