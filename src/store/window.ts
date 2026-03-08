@@ -5,6 +5,7 @@ import { INITIAL_Z_INDEX, WINDOW_CONFIG } from '#constants'
 export type WindowData = any
 
 export interface WindowState {
+    title: string
     isOpen: boolean
     zIndex: number
     data: WindowData | null
@@ -50,7 +51,6 @@ const useWindowStore = create<WindowStore>()(
         focusWindow: (windowKey) =>
             set((state) => {
                 const win = state.windows[windowKey]
-                if (!win) return
                 win.zIndex = state.nextZindex++
             }),
     })),
