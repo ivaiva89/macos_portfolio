@@ -39,7 +39,7 @@ const WORK_LOCATION: LocationRoot = {
         // ▶ Project 1
         {
             id: 5,
-            name: 'Test project 1',
+            name: 'Skiper',
             icon: '/images/folder.png',
             kind: 'folder',
             position: 'top-10 left-5', // icon position inside Finder
@@ -47,40 +47,42 @@ const WORK_LOCATION: LocationRoot = {
             children: [
                 {
                     id: 1,
-                    name: 'Test Project 1.txt',
+                    name: 'Skiper.txt',
                     icon: '/images/txt.png',
                     kind: 'file',
                     fileType: 'txt',
                     position: 'top-5 left-10',
-                    description: [''],
+                    description: [
+                        'Skiper is a multi-tenant SaaS reservation platform designed for managing bookings, business operations, and customer interactions. I worked on building scalable frontend architecture, developing reusable UI components, and delivering production dashboards and portals used across multiple services.',
+                    ],
                 },
                 {
                     id: 2,
-                    name: 'tets url',
+                    name: 'Visit Reserve Skiper',
                     icon: '/images/safari.png',
                     kind: 'file',
                     fileType: 'url',
-                    href: 'https://google.com',
+                    href: 'https://reserve.skiper.io/en',
                     position: 'top-10 right-20',
                 },
                 {
                     id: 4,
-                    name: 'tes image.png',
+                    name: 'Skiper landing.png',
                     icon: '/images/image.png',
                     kind: 'file',
                     fileType: 'img',
                     position: 'top-52 right-80',
-                    imageUrl: '/images/project-1.png',
+                    imageUrl: '/images/skiper.png',
                 },
-                {
-                    id: 5,
-                    name: 'Design.fig',
-                    icon: '/images/plain.png',
-                    kind: 'file',
-                    fileType: 'fig',
-                    href: 'https://google.com',
-                    position: 'top-60 right-20',
-                },
+                // {
+                //     id: 5,
+                //     name: 'Design.fig',
+                //     icon: '/images/plain.png',
+                //     kind: 'file',
+                //     fileType: 'fig',
+                //     href: 'https://google.com',
+                //     position: 'top-40 right-20',
+                // },
             ],
         },
 
