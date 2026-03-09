@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { Draggable } from 'gsap/all'
-
+import { Analytics } from '@vercel/analytics/next'
 import { Welcome, Navbar, Dock, Home } from '#components'
 import { Terminal, Safari, Resume, Finder, Text, Image, Contact } from '#windows'
 
@@ -21,6 +21,7 @@ const App = () => {
             <Image />
             <Contact />
             <Home />
+            <Analytics />
         </main>
     )
 }
