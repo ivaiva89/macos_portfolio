@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { Draggable } from 'gsap/all'
-import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/react'
 import { Welcome, Navbar, Dock, Home } from '#components'
 import { Terminal, Safari, Resume, Finder, Text, Image, Contact } from '#windows'
 
