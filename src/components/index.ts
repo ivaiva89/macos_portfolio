@@ -3,5 +3,6 @@ import Welcome from './Welcome'
 import Dock from './Dock'
 import WindowControls from './WindowControls.tsx'
 import Home from './Home'
+import AppEffects from './AppEffects'
 
-export { Welcome, Navbar, Dock, WindowControls, Home }
+export { Welcome, Navbar, Dock, WindowControls, Home, AppEffects }

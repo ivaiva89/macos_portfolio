@@ -1,10 +1,20 @@
 import dayjs from 'dayjs'
 
 import { navIcons, navLinks, type WindowKey } from '#constants'
-import { useWindowStore } from '#store'
+import { useRouterStore, useWindowStore } from '#store'
+import { BLOG_INDEX_PATH } from '#lib/routes'
 
 const Navbar = () => {
     const { openWindow } = useWindowStore()
+    const { navigate } = useRouterStore()
+
+    const handleOpen = (type: WindowKey) => {
+        if (type === 'safari') {
+            navigate(BLOG_INDEX_PATH)
+        }
+
+        openWindow(type)
+    }
 
     return (
         <nav>
@@ -13,7 +23,7 @@ const Navbar = () => {
                 <p className="font-bold">Iva's Portfolio</p>
                 <ul>
                     {navLinks.map(({ id, name, type }) => (
-                        <li key={id} onClick={() => openWindow(type as WindowKey)}>
+                        <li key={id} onClick={() => handleOpen(type as WindowKey)}>
                             <p>{name}</p>
                         </li>
                     ))}

@@ -4,12 +4,14 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
 import { dockApps, type WindowKey } from '#constants'
-import { useWindowStore } from '#store'
+import { useRouterStore, useWindowStore } from '#store'
+import { BLOG_INDEX_PATH } from '#lib/routes'
 
 type DockApp = { id: WindowKey; name: string; icon: string; canOpen: true } | { id: string; name: string; icon: string; canOpen: false }
 
 const Dock = () => {
     const { windows, openWindow, closeWindow } = useWindowStore()
+    const { navigate, pathname } = useRouterStore()
     const dockRef = useRef<HTMLDivElement | null>(null)
     const activeTweensRef = useRef<Map<Element, gsap.core.Tween>>(new Map())
 
@@ -99,6 +101,19 @@ const Dock = () => {
 
         if (!window) {
             console.error(`Window not found for app ${app.id}`)
+            return
+        }
+
+        if (windowKey === 'safari') {
+            if (window.isOpen) {
+                closeWindow(windowKey)
+                if (pathname.startsWith(BLOG_INDEX_PATH)) {
+                    navigate('/')
+                }
+            } else {
+                navigate(BLOG_INDEX_PATH)
+                openWindow(windowKey)
+            }
             return
         }
 

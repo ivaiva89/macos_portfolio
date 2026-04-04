@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://ivakobalava.dev</loc>
+    <lastmod>2026-04-04T20:43:29.858Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ivakobalava.dev/blog</loc>
+    <lastmod>2026-04-04T20:43:29.859Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ivakobalava.dev/blog/building-safari-inside-a-desktop-portfolio</loc>
+    <lastmod>2026-03-10T00:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ivakobalava.dev/blog/frontend-systems-that-scale-beyond-the-first-release</loc>
+    <lastmod>2026-02-25T00:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ivakobalava.dev/blog/what-i-care-about-when-shipping-product-ui</loc>
+    <lastmod>2026-01-20T00:00:00.000Z</lastmod>
+  </url>
+</urlset>

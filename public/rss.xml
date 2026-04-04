@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Iva Kobalava Articles</title>
+    <link>https://ivakobalava.dev/blog</link>
+    <description>Notes on frontend architecture, product delivery, and building polished developer experiences.</description>
+    <language>en</language>
+    <item>
+      <title>Building a Safari window inside a desktop portfolio</title>
+      <link>https://ivakobalava.dev/blog/building-safari-inside-a-desktop-portfolio</link>
+      <guid>https://ivakobalava.dev/blog/building-safari-inside-a-desktop-portfolio</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description>How I approached turning a portfolio into a small operating-system illusion without losing clarity or performance.</description>
+    </item>
+    <item>
+      <title>Frontend systems that scale beyond the first release</title>
+      <link>https://ivakobalava.dev/blog/frontend-systems-that-scale-beyond-the-first-release</link>
+      <guid>https://ivakobalava.dev/blog/frontend-systems-that-scale-beyond-the-first-release</guid>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 GMT</pubDate>
+      <description>The difference between shipping a fast v1 and building a frontend that still feels coherent after dozens of features.</description>
+    </item>
+    <item>
+      <title>What I care about when shipping product UI</title>
+      <link>https://ivakobalava.dev/blog/what-i-care-about-when-shipping-product-ui</link>
+      <guid>https://ivakobalava.dev/blog/what-i-care-about-when-shipping-product-ui</guid>
+      <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
+      <description>A short list of the product qualities I watch for when turning requirements into interfaces people actually trust.</description>
+    </item>
+  </channel>
+</rss>

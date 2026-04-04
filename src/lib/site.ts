@@ -1,0 +1,6 @@
+export const SITE_URL = 'https://ivakobalava.dev'
+export const SITE_NAME = 'Iva Kobalava'
+export const SITE_TITLE = 'Iva Kobalava Portfolio'
+export const SITE_DESCRIPTION = 'Senior frontend engineer portfolio built as a macOS desktop experience.'
+export const BLOG_TITLE = 'Articles'
+export const BLOG_DESCRIPTION = 'Notes on frontend architecture, product delivery, and building polished developer experiences.'

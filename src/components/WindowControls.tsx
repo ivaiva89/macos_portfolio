@@ -1,10 +1,15 @@
 import { useWindowStore, type WindowKey } from '#store'
 
-const WindowControls = ({ target }: { target: WindowKey }) => {
+interface WindowControlsProps {
+    target: WindowKey
+    onClose?: () => void
+}
+
+const WindowControls = ({ target, onClose }: WindowControlsProps) => {
     const { closeWindow } = useWindowStore()
     return (
         <div id="window-controls">
-            <div className="close" onClick={() => closeWindow(target)} />
+            <button type="button" className="close" aria-label={`Close ${target}`} onClick={() => (onClose ? onClose() : closeWindow(target))} />
             <div className="minimize " />
             <div className="maximize" />
         </div>

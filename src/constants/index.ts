@@ -5,6 +5,11 @@ const navLinks = [
         type: 'finder',
     },
     {
+        id: 2,
+        name: 'Articles',
+        type: 'safari',
+    },
+    {
         id: 3,
         name: 'Contact',
         type: 'contact',
@@ -154,16 +159,6 @@ const WINDOW_CONFIG = {
     },
 }
 
-const blogPosts = [
-    {
-        id: 1,
-        date: 'Sep 2, 2025',
-        title: 'Example title',
-        image: '/images/blog1.png',
-        link: '',
-    },
-]
-
 export type WindowKey = keyof typeof WINDOW_CONFIG
 
-export { navLinks, navIcons, techStack, dockApps, blogPosts, INITIAL_Z_INDEX, WINDOW_CONFIG }
+export { navLinks, navIcons, techStack, dockApps, INITIAL_Z_INDEX, WINDOW_CONFIG }
