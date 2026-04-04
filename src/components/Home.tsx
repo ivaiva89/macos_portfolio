@@ -16,7 +16,11 @@ const Home = () => {
     }
 
     useGSAP(() => {
-        Draggable.create('.folder')
+        const instances = Draggable.create('.folder')
+
+        return () => {
+            instances.forEach((instance) => instance.kill())
+        }
     })
 
     return (

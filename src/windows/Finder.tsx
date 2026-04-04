@@ -19,7 +19,7 @@ const Finder = () => {
         if (item.fileType === 'txt') return openWindow('tstfile', item)
         if (item.fileType === 'pdf') return openWindow('resume')
         if (item.fileType === 'img') return openWindow('imgfile', item)
-        if (['fig', 'url'].includes(item.fileType) && item.href) return window.open(item.href, '_blank')
+        if (['fig', 'url'].includes(item.fileType) && item.href) return window.open(item.href, '_blank', 'noopener,noreferrer')
     }
 
     const renderList = (name: string, items: FolderItem[]) => (

@@ -2,7 +2,7 @@ import gsap from 'gsap'
 import { Draggable } from 'gsap/all'
 import { Analytics } from '@vercel/analytics/react'
 import { Welcome, Navbar, Dock, Home } from '#components'
-import { Terminal, Safari, Resume, Finder, Text, Image, Contact } from '#windows'
+import { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos } from '#windows'
 
 gsap.registerPlugin(Draggable)
 
@@ -19,6 +19,7 @@ const App = () => {
             <Finder />
             <Text />
             <Image />
+            <Photos />
             <Contact />
             <Home />
             <Analytics />

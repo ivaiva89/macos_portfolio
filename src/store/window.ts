@@ -1,8 +1,9 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from '#constants'
+import type { FileItem } from '#constants/location'
 
-export type WindowData = any
+export type WindowData = FileItem
 
 export interface WindowState {
     title: string
@@ -31,13 +32,15 @@ const useWindowStore = create<WindowStore>()(
         windows: WINDOW_CONFIG as Record<WindowKey, WindowState>,
         nextZindex: INITIAL_Z_INDEX + 1,
 
-        openWindow: (windowKey, data = null) =>
+        openWindow: (windowKey, data) =>
             set((state) => {
                 const win = state.windows[windowKey]
                 if (!win) return
                 win.isOpen = true
                 win.zIndex = state.nextZindex
-                win.data = data ?? win.data
+                if (data !== undefined) {
+                    win.data = data
+                }
                 state.nextZindex++
             }),
         closeWindow: (windowKey) =>
