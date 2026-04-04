@@ -1,6 +1,7 @@
 import WindowWrapper from '#hoc/WindowWrapper'
 import { socials } from '#constants/socials'
 import { WindowControls } from '#components'
+import { profile } from '#constants/profile'
 
 const Contact = () => {
     return (
@@ -11,11 +12,12 @@ const Contact = () => {
             </div>
 
             <div className="contact-content">
-                <img src="/images/iva.png" alt="Iva" className="w-24 h-24 object-cover rounded-full" />
+                <img src="/images/iva.png" alt={profile.fullName} className="w-24 h-24 object-cover rounded-full" />
 
-                <h3>Let's Connect</h3>
-                <p>Got an idea? A bug to squash? Or just wanna talk tech? I'm in.</p>
-                <p>ivakobalava@gmail.com</p>
+                <h3>{profile.fullName}</h3>
+                <p>{profile.role} based in {profile.location}.</p>
+                <p>{profile.headline}</p>
+                <p>{profile.contact.email}</p>
                 <ul className="socials">
                     {socials.map(({ id, bg, link, icon, text }) => (
                         <li key={id} className="social-card" style={{ background: bg }}>

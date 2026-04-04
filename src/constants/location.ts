@@ -1,3 +1,5 @@
+import { profile } from './profile'
+
 export type FileType = 'txt' | 'url' | 'img' | 'fig' | 'pdf'
 
 export interface BaseLocationItem {
@@ -32,14 +34,13 @@ export interface LocationRoot extends FolderItem {
 const WORK_LOCATION: LocationRoot = {
     id: 1,
     type: 'work',
-    name: 'Work',
+    name: 'Selected Work',
     icon: '/icons/work.svg',
     kind: 'folder',
     children: [
-        // ▶ Project 1
         {
             id: 5,
-            name: 'Skiper',
+            name: 'Georgian Service Group',
             icon: '/images/folder.png',
             kind: 'folder',
             position: 'top-10 left-5', // icon position inside Finder
@@ -47,14 +48,45 @@ const WORK_LOCATION: LocationRoot = {
             children: [
                 {
                     id: 1,
-                    name: 'Skiper.txt',
+                    name: 'Georgian Service Group.txt',
                     icon: '/images/txt.png',
                     kind: 'file',
                     fileType: 'txt',
                     position: 'top-5 left-10',
-                    description: [
-                        'Skiper is a multi-tenant SaaS reservation platform designed for managing bookings, business operations, and customer interactions. I worked on building scalable frontend architecture, developing reusable UI components, and delivering production dashboards and portals used across multiple services.',
-                    ],
+                    subtitle: `${profile.experience[0].role} · ${profile.experience[0].period}`,
+                    image: profile.experience[0].imageUrl,
+                    description: [profile.experience[0].summary, ...profile.experience[0].highlights],
+                },
+                {
+                    id: 2,
+                    name: 'Experience stack.txt',
+                    icon: '/images/txt.png',
+                    kind: 'file',
+                    fileType: 'txt',
+                    position: 'top-10 right-20',
+                    subtitle: 'Core technologies',
+                    description: [profile.experience[0].stack.join(' · ')],
+                },
+            ],
+        },
+        {
+            id: 7,
+            name: 'Skiper Technologies',
+            icon: '/images/folder.png',
+            kind: 'folder',
+            position: 'top-10 left-80',
+            windowPosition: 'top-[33vh] right-25',
+            children: [
+                {
+                    id: 1,
+                    name: 'Skiper Technologies.txt',
+                    icon: '/images/txt.png',
+                    kind: 'file',
+                    fileType: 'txt',
+                    position: 'top-5 left-10',
+                    subtitle: `${profile.experience[1].role} · ${profile.experience[1].period}`,
+                    image: profile.experience[1].imageUrl,
+                    description: [profile.experience[1].summary, ...profile.experience[1].highlights],
                 },
                 {
                     id: 2,
@@ -62,7 +94,7 @@ const WORK_LOCATION: LocationRoot = {
                     icon: '/images/safari.png',
                     kind: 'file',
                     fileType: 'url',
-                    href: 'https://reserve.skiper.io/en',
+                    href: profile.experience[1].link,
                     position: 'top-10 right-20',
                 },
                 {
@@ -74,62 +106,45 @@ const WORK_LOCATION: LocationRoot = {
                     position: 'top-52 right-80',
                     imageUrl: '/images/skiper.png',
                 },
-                // {
-                //     id: 5,
-                //     name: 'Design.fig',
-                //     icon: '/images/plain.png',
-                //     kind: 'file',
-                //     fileType: 'fig',
-                //     href: 'https://google.com',
-                //     position: 'top-40 right-20',
-                // },
+                {
+                    id: 5,
+                    name: 'Frontend stack.txt',
+                    icon: '/images/txt.png',
+                    kind: 'file',
+                    fileType: 'txt',
+                    position: 'top-60 right-20',
+                    subtitle: 'Core technologies',
+                    description: [profile.experience[1].stack.join(' · ')],
+                },
             ],
         },
-
-        // ▶ Project 2
         {
-            id: 7,
-            name: 'Test Project 2',
+            id: 9,
+            name: 'DevApply',
             icon: '/images/folder.png',
             kind: 'folder',
-            position: 'top-10 left-80',
-            windowPosition: 'top-[33vh] right-25',
+            position: 'top-40 left-40',
+            windowPosition: 'top-[24vh] right-40',
             children: [
                 {
                     id: 1,
-                    name: 'Test Project 2.txt',
+                    name: 'DevApply.txt',
                     icon: '/images/txt.png',
                     kind: 'file',
                     fileType: 'txt',
                     position: 'top-5 left-10',
-                    description: [''],
+                    subtitle: `${profile.projects[0].role} · ${profile.projects[0].period}`,
+                    image: profile.projects[0].imageUrl,
+                    description: [profile.projects[0].summary, `Stack: ${profile.projects[0].stack.join(' · ')}`],
                 },
                 {
                     id: 2,
-                    name: 'Test Project 2.com',
+                    name: 'Open DevApply',
                     icon: '/images/safari.png',
                     kind: 'file',
                     fileType: 'url',
-                    href: 'https://google.com',
+                    href: profile.projects[0].link,
                     position: 'top-10 right-20',
-                },
-                {
-                    id: 4,
-                    name: 'Test Project image.png',
-                    icon: '/images/image.png',
-                    kind: 'file',
-                    fileType: 'img',
-                    position: 'top-52 right-80',
-                    imageUrl: '/images/project-3.png',
-                },
-                {
-                    id: 5,
-                    name: 'Design.fig',
-                    icon: '/images/plain.png',
-                    kind: 'file',
-                    fileType: 'fig',
-                    href: 'https://google.com',
-                    position: 'top-60 right-20',
                 },
             ],
         },
@@ -150,14 +165,9 @@ const ABOUT_LOCATION: LocationRoot = {
             kind: 'file',
             fileType: 'txt',
             position: 'top-50 left-5',
-            subtitle: 'Meet the Developer Behind the Code',
+            subtitle: profile.aboutTitle,
             image: '/images/iva.png',
-            description: [
-                'Hey! I’m Iva 👋 — a frontend engineer who loves building modern, high-performance web apps.',
-                'My main stack is React, Next.js, and TypeScript, with a strong focus on scalable architecture and clean UI.',
-                'I enjoy solving complex product problems and turning them into smooth, intuitive user experiences.',
-                'When I’m not coding, I’m usually improving my dev setup, exploring new tools, or learning backend with Node.js.',
-            ],
+            description: [...profile.aboutParagraphs, `${profile.education.institution} · ${profile.education.degree}`],
         },
     ],
 }
@@ -175,8 +185,6 @@ const RESUME_LOCATION: LocationRoot = {
             icon: '/images/pdf.png',
             kind: 'file',
             fileType: 'pdf',
-            // add `href` for hosted resume
-            // href: "/your/resume/path.pdf",
         },
     ],
 }

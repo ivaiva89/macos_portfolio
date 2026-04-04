@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 
 import { navIcons, navLinks, type WindowKey } from '#constants'
+import { profile } from '#constants/profile'
 import { useRouterStore, useWindowStore } from '#store'
 import { BLOG_INDEX_PATH } from '#lib/routes'
 
@@ -20,7 +21,7 @@ const Navbar = () => {
         <nav>
             <div>
                 <img src="/images/logo.svg" alt="logo" />
-                <p className="font-bold">Iva's Portfolio</p>
+                <p className="font-bold">{profile.fullName}</p>
                 <ul>
                     {navLinks.map(({ id, name, type }) => (
                         <li key={id} onClick={() => handleOpen(type as WindowKey)}>

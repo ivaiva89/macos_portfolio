@@ -2,6 +2,7 @@ import WindowWrapper from '#hoc/WindowWrapper'
 import { techStack } from '#constants'
 import { Check, Flag } from 'lucide-react'
 import { WindowControls } from '#components'
+import { profile } from '#constants/profile'
 
 const Terminal = () => {
     return (
@@ -13,7 +14,7 @@ const Terminal = () => {
 
             <div className="techstack">
                 <p>
-                    <span className="font-bold">@Iva %</span> show tech stack
+                    <span className="font-bold">{profile.displayHandle} %</span> show tech stack
                 </p>
 
                 <div className="label">
@@ -23,13 +24,14 @@ const Terminal = () => {
 
                 <ul className="content">
                     {techStack.map(({ category, items }) => (
-                        <li key={category} className="flex items-center">
+                        <li key={category} className="stack-row">
                             <Check className="check" size={20} />
                             <h3>{category}</h3>
                             <ul>
                                 {items.map((item, i) => (
                                     <li key={item}>
-                                        {item} {i < items.length - 1 ? ',' : ''}
+                                        {item}
+                                        {i < items.length - 1 ? ',' : ''}
                                     </li>
                                 ))}
                             </ul>
@@ -39,12 +41,12 @@ const Terminal = () => {
 
                 <div className="footnote">
                     <p>
-                        <Check size={20} /> 5 of 5 stacks loaded successfully (100%)
+                        <Check size={20} /> {techStack.length} of {techStack.length} stacks loaded successfully (100%)
                     </p>
 
                     <p>
                         <Flag size={15} fill="black" />
-                        Render time: 6ms
+                        Resume-backed stack map
                     </p>
                 </div>
             </div>
