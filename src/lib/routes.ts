@@ -1,4 +1,5 @@
 export const BLOG_INDEX_PATH = '/blog'
+export const RESUME_PRINT_PATH = '/resume/print'
 
 const trimTrailingSlash = (value: string) => {
     if (value.length > 1 && value.endsWith('/')) {
@@ -15,6 +16,7 @@ export const normalizePath = (value: string) => {
 }
 
 export const isBlogPath = (pathname: string) => normalizePath(pathname).startsWith(BLOG_INDEX_PATH)
+export const isResumePrintPath = (pathname: string) => normalizePath(pathname) === RESUME_PRINT_PATH
 
 export const getBlogPostPath = (slug: string) => `${BLOG_INDEX_PATH}/${slug}`
 
