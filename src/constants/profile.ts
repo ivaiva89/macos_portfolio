@@ -19,6 +19,7 @@ export interface ResumeProject {
     role: string
     period: string
     summary: string
+    highlights?: string[]
     stack: string[]
     link: string
     imageUrl?: string
@@ -42,16 +43,18 @@ export const profile = {
     displayHandle: '@Iveri',
     role: 'Senior Frontend Engineer',
     location: 'Georgia (Remote)',
-    headline: 'Senior Frontend Engineer building resilient product systems across frontend, backend, and delivery.',
+    headline: 'I build product systems that stay clear under scale — frontend architecture, backend services, and delivery.',
     summary:
         'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. At GSG, top contributor by commit volume on a live EU logistics platform while also delivering backend services and CI/CD pipelines. At Skiper, sole frontend owner, leading architecture, platform migrations, and multilingual product delivery across a growing SaaS product.',
     aboutTitle: 'Frontend-led fullstack engineer with product and platform depth',
-    aboutParagraphs: [
-        'I build product systems that stay clear under scale, from frontend architecture and state management to backend services and delivery workflows.',
-        'At Georgian Service Group, I work across frontend, backend microservices, and DevOps for a live EU logistics platform, shipping planning interfaces, shared UI systems, and production services used by operators across Europe.',
-        'At Skiper, I am a co-founder and the sole frontend owner, responsible for architecture, feature delivery, migration work, and multilingual product foundations across the reservation platform.',
-        'My working stack spans React, TypeScript, TanStack Query, Java/Spring Boot, Node.js, PostgreSQL, and AWS.',
-    ],
+    about: {
+        intro: 'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. I build product systems that stay clear under scale.',
+        currently: [
+            'Georgian Service Group — senior engineer on a live EU logistics platform, working across frontend, backend microservices, and DevOps.',
+            'Skiper — co-founder and sole frontend owner of the reservation platform.',
+        ],
+        stackLine: 'React · TypeScript · TanStack Query · Java/Spring Boot · Node.js · PostgreSQL · AWS',
+    },
     skills: [
         {
             category: 'Frontend',
@@ -75,12 +78,12 @@ export const profile = {
             company: 'Georgian Service Group',
             role: 'Senior Software Engineer',
             period: 'June 2021 - Present',
-            summary:
-                'EU e-commerce logistics platform for parcel routing optimization and truck line scheduling across Europe. Top contributor by commit volume on a 20+ engineer team, working across frontend, backend microservices, and DevOps.',
+            summary: 'EU logistics platform for e-commerce parcel routing and truck-line scheduling — a live product used by operators across Europe.',
             highlights: [
-                'Built multi-view planning and scheduling interfaces with dynamic filtering, forecasting, and scenario comparison for core logistics workflows.',
-                'Established frontend data-layer patterns with Redux Toolkit and TanStack Query, and maintained a shared component library used across the team.',
-                'Designed Spring Boot services and REST APIs, then supported delivery with Jenkins pipelines, Helm-managed Kubernetes deployments, and observability tooling.',
+                '490+ commits and 200+ PRs over 4 years — top contributor on a 20+ engineer team.',
+                'Built the multi-view planning and scheduling tools operators use every day.',
+                'Set the frontend data-layer patterns and maintain the shared component library the whole team builds on.',
+                'Ship beyond the frontend: Spring Boot services, Jenkins pipelines, Helm-managed Kubernetes.',
             ],
             stack: ['React', 'TypeScript', 'Vite', 'Redux Toolkit', 'TanStack Query', 'Vitest', 'Java 17/21', 'Spring Boot', 'PostgreSQL', 'Kubernetes', 'Docker', 'Helm', 'AWS', 'Jenkins'],
             imageUrl: '/images/blog1.png',
@@ -89,11 +92,12 @@ export const profile = {
             company: 'Skiper Technologies GmbH',
             role: 'Co-founder & Frontend Lead',
             period: '2022 - Present',
-            summary: 'One of three co-founders and sole frontend owner across the Skiper reservation platform.',
+            summary: 'Restaurant reservation platform. One of three co-founders — and the only frontend engineer on the product.',
             highlights: [
-                'Led frontend development from initial commit to production across 10+ product domains in a React and TypeScript SPA.',
-                'Migrated the app from Create React App to Vite and refactored a flat codebase into a 5-layer Feature-Sliced Design architecture.',
-                'Built the multilingual product foundation and introduced regression and integration tests for multi-tenant and authentication flows.',
+                'Took the frontend from first commit to production solo: 414 commits, ~108k lines, 10+ product domains.',
+                'Cut production builds from 52s to 3s by migrating CRA to Vite.',
+                'Rebuilt a 280-file flat codebase as 5-layer Feature-Sliced Design — zero cross-layer violations since.',
+                'Shipped the product in 3 languages, from authentication to core booking flows.',
             ],
             stack: ['React', 'TypeScript', 'Vite', 'TanStack Query', 'shadcn/ui', 'Java Spring Boot', 'AWS'],
             link: 'https://reserve.skiper.io/en',
@@ -105,7 +109,8 @@ export const profile = {
             name: 'DevApply',
             role: 'Solo-built',
             period: 'April 2026',
-            summary: 'Full-stack job application tracker for developers with a Kanban pipeline, resume version management, follow-up reminders, and career analytics.',
+            summary: 'Job application tracker for developers — Kanban pipeline, resume version management, follow-up reminders, and career analytics.',
+            highlights: ['Designed, built, and shipped solo in a month.', 'Live at devapply.app — free to use.'],
             stack: ['Next.js', 'Prisma', 'Neon', 'Clerk', 'PostHog', 'Resend'],
             link: 'https://devapply.app',
             imageUrl: '/images/plain.png',

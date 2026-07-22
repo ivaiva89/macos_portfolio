@@ -9,10 +9,17 @@ export interface BaseLocationItem {
     position?: string
 }
 
+export interface FileSection {
+    heading?: string
+    paragraphs?: string[]
+    bullets?: string[]
+}
+
 export interface FileItem extends BaseLocationItem {
     kind: 'file'
     fileType: FileType
     description?: string[]
+    sections?: FileSection[]
     href?: string
     imageUrl?: string
     subtitle?: string
@@ -55,7 +62,10 @@ const WORK_LOCATION: LocationRoot = {
                     position: 'top-5 left-10',
                     subtitle: `${profile.experience[0].role} · ${profile.experience[0].period}`,
                     image: profile.experience[0].imageUrl,
-                    description: [profile.experience[0].summary, ...profile.experience[0].highlights],
+                    sections: [
+                        { paragraphs: [profile.experience[0].summary] },
+                        { heading: 'Highlights', bullets: profile.experience[0].highlights },
+                    ],
                 },
                 {
                     id: 2,
@@ -86,7 +96,10 @@ const WORK_LOCATION: LocationRoot = {
                     position: 'top-5 left-10',
                     subtitle: `${profile.experience[1].role} · ${profile.experience[1].period}`,
                     image: profile.experience[1].imageUrl,
-                    description: [profile.experience[1].summary, ...profile.experience[1].highlights],
+                    sections: [
+                        { paragraphs: [profile.experience[1].summary] },
+                        { heading: 'Highlights', bullets: profile.experience[1].highlights },
+                    ],
                 },
                 {
                     id: 2,
@@ -135,7 +148,11 @@ const WORK_LOCATION: LocationRoot = {
                     position: 'top-5 left-10',
                     subtitle: `${profile.projects[0].role} · ${profile.projects[0].period}`,
                     image: profile.projects[0].imageUrl,
-                    description: [profile.projects[0].summary, `Stack: ${profile.projects[0].stack.join(' · ')}`],
+                    sections: [
+                        { paragraphs: [profile.projects[0].summary] },
+                        ...(profile.projects[0].highlights ? [{ heading: 'Highlights', bullets: profile.projects[0].highlights }] : []),
+                        { heading: 'Stack', paragraphs: [profile.projects[0].stack.join(' · ')] },
+                    ],
                 },
                 {
                     id: 2,
@@ -167,7 +184,12 @@ const ABOUT_LOCATION: LocationRoot = {
             position: 'top-50 left-5',
             subtitle: profile.aboutTitle,
             image: '/images/iva.webp',
-            description: [...profile.aboutParagraphs, `${profile.education.institution} · ${profile.education.degree}`],
+            sections: [
+                { paragraphs: [profile.about.intro] },
+                { heading: 'Currently', bullets: profile.about.currently },
+                { heading: 'Stack', paragraphs: [profile.about.stackLine] },
+                { heading: 'Education', paragraphs: [`${profile.education.institution} · ${profile.education.degree}`] },
+            ],
         },
     ],
 }
