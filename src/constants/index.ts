@@ -83,6 +83,30 @@ const dockApps = [
     },
 ]
 
+export interface MobileApp {
+    id: string
+    name: string
+    icon: string
+}
+
+/** Home-screen grid on the iPhone shell. */
+const mobileApps: MobileApp[] = [
+    { id: 'finder', name: 'Portfolio', icon: 'finder.png' },
+    { id: 'safari', name: 'Articles', icon: 'safari.png' },
+    { id: 'photos', name: 'Gallery', icon: 'photos.png' },
+    { id: 'terminal', name: 'Skills', icon: 'terminal.png' },
+    { id: 'resume', name: 'Resume', icon: 'pdf.png' },
+    { id: 'contact', name: 'Contact', icon: 'contact.png' },
+]
+
+/** Bottom dock on the iPhone shell. */
+const mobileDockApps: MobileApp[] = [
+    { id: 'finder', name: 'Portfolio', icon: 'finder.png' },
+    { id: 'safari', name: 'Articles', icon: 'safari.png' },
+    { id: 'contact', name: 'Contact', icon: 'contact.png' },
+    { id: 'resume', name: 'Resume', icon: 'pdf.png' },
+]
+
 const INITIAL_Z_INDEX = 1000
 
 const WINDOW_CONFIG = {
@@ -138,4 +162,4 @@ const WINDOW_CONFIG = {
 
 export type WindowKey = keyof typeof WINDOW_CONFIG
 
-export { navLinks, navIcons, techStack, dockApps, INITIAL_Z_INDEX, WINDOW_CONFIG }
+export { navLinks, navIcons, techStack, dockApps, mobileApps, mobileDockApps, INITIAL_Z_INDEX, WINDOW_CONFIG }

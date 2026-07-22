@@ -6,5 +6,6 @@ import Home from './Home'
 import AppEffects from './AppEffects'
 import ResumeDocument from './ResumeDocument'
 import ResumePrintPage from './ResumePrintPage'
+import MobileShell from './mobile/MobileShell'
 
-export { Welcome, Navbar, Dock, WindowControls, Home, AppEffects, ResumeDocument, ResumePrintPage }
+export { Welcome, Navbar, Dock, WindowControls, Home, AppEffects, ResumeDocument, ResumePrintPage, MobileShell }

@@ -1,4 +1,4 @@
-import dayjs from 'dayjs'
+import useClock from '#lib/useClock'
 
 import { navIcons, navLinks, type WindowKey } from '#constants'
 import { profile } from '#constants/profile'
@@ -8,6 +8,7 @@ import { BLOG_INDEX_PATH } from '#lib/routes'
 const Navbar = () => {
     const { openWindow } = useWindowStore()
     const { navigate } = useRouterStore()
+    const time = useClock('ddd MMM D h:mm A')
 
     const handleOpen = (type: WindowKey) => {
         if (type === 'safari') {
@@ -24,8 +25,10 @@ const Navbar = () => {
                 <p className="font-bold">{profile.fullName}</p>
                 <ul>
                     {navLinks.map(({ id, name, type }) => (
-                        <li key={id} onClick={() => handleOpen(type as WindowKey)}>
-                            <p>{name}</p>
+                        <li key={id}>
+                            <button type="button" className="nav-link" onClick={() => handleOpen(type as WindowKey)}>
+                                {name}
+                            </button>
                         </li>
                     ))}
                 </ul>
@@ -35,11 +38,11 @@ const Navbar = () => {
                 <ul>
                     {navIcons.map(({ id, img }) => (
                         <li key={id}>
-                            <img src={img} className="icon-hover" alt={`icon-${id}`} />
+                            <img src={img} className="icon-hover" alt="" />
                         </li>
                     ))}
                 </ul>
-                <time>{dayjs().format('ddd MMM D h:mm A')}</time>
+                <time>{time}</time>
             </div>
         </nav>
     )

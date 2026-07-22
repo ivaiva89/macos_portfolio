@@ -1,15 +1,17 @@
 import gsap from 'gsap'
 import { Draggable } from 'gsap/all'
 import { Analytics } from '@vercel/analytics/react'
-import { Welcome, Navbar, Dock, Home, AppEffects, ResumePrintPage } from '#components'
+import { Welcome, Navbar, Dock, Home, AppEffects, ResumePrintPage, MobileShell } from '#components'
 import { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos } from '#windows'
 import { useRouterStore } from '#store'
 import { isResumePrintPath } from '#lib/routes'
+import { useIsMobile } from '#lib/useIsMobile'
 
 gsap.registerPlugin(Draggable)
 
 const App = () => {
     const { pathname } = useRouterStore()
+    const isMobile = useIsMobile()
 
     if (isResumePrintPath(pathname)) {
         return (
@@ -24,9 +26,17 @@ const App = () => {
     return (
         <main>
             <AppEffects />
-            <Navbar />
-            <Welcome />
-            <Dock />
+
+            {isMobile ? (
+                <MobileShell />
+            ) : (
+                <>
+                    <Navbar />
+                    <Welcome />
+                    <Dock />
+                    <Home />
+                </>
+            )}
 
             <Terminal />
             <Safari />
@@ -36,7 +46,6 @@ const App = () => {
             <Image />
             <Photos />
             <Contact />
-            <Home />
             <Analytics />
         </main>
     )

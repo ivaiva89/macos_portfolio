@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { allowsHoverMotion } from '#lib/motion'
 
 gsap.registerPlugin(useGSAP)
 
@@ -10,15 +11,19 @@ const FONT_WEIGHTS = {
 }
 
 const renderText = (text: string, className: string, baseWeight = 400) => {
-    return [...text].map((char, index) => (
-        <span key={index} className={className} style={{ fontVariationSettings: `'wght' ${baseWeight}` }}>
-            {char === ' ' ? '\u00A0' : char}
+    return (
+        <span aria-label={text} role="text">
+            {[...text].map((char, index) => (
+                <span key={index} aria-hidden="true" className={className} style={{ fontVariationSettings: `'wght' ${baseWeight}` }}>
+                    {char === ' ' ? '\u00A0' : char}
+                </span>
+            ))}
         </span>
-    ))
+    )
 }
 
 const setupTextHover = (container: HTMLElement | null, type: keyof typeof FONT_WEIGHTS, onTween: (target: Element, tween: gsap.core.Tween) => void) => {
-    if (!container) return () => {}
+    if (!container || !allowsHoverMotion()) return () => {}
 
     const letters = container.querySelectorAll('span')
     const { min, max, default: base } = FONT_WEIGHTS[type]
@@ -104,14 +109,10 @@ const Welcome = () => {
 
     return (
         <section id="welcome">
-            <p ref={subtitleRef}>{renderText("Hey, I'm Iva Welcome to my", 'text-3xl font-georama', 100)} </p>
+            <p ref={subtitleRef}>{renderText("Hey, I'm Iva. Welcome to my", 'text-3xl font-georama', 100)} </p>
             <h1 ref={titleRef} className="mt-7">
                 {renderText('Portfolio', 'text-9xl italic font-georama')}
             </h1>
-
-            <div className="small-screen">
-                <p>This Portfolio is designed for desktop/tablet screens</p>
-            </div>
         </section>
     )
 }

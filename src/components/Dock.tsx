@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { dockApps, type WindowKey } from '#constants'
 import { useRouterStore, useWindowStore } from '#store'
 import { BLOG_INDEX_PATH } from '#lib/routes'
+import { allowsHoverMotion } from '#lib/motion'
 
 type DockApp = { id: WindowKey; name: string; icon: string; canOpen: true } | { id: string; name: string; icon: string; canOpen: false }
 
@@ -17,7 +18,7 @@ const Dock = () => {
 
     useGSAP(() => {
         const dock = dockRef.current
-        if (!dock) return () => {}
+        if (!dock || !allowsHoverMotion()) return () => {}
 
         const icons = dock.querySelectorAll('.dock-icon')
 

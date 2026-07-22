@@ -7,7 +7,7 @@ body {
     width: 100dvw;
     overflow: hidden;
     height: 100dvh;
-    background-image: url("/images/wallpaper.png");
+    background-image: url("/images/wallpaper.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -50,8 +50,8 @@ body {
         ul {
             @apply flex items-center gap-5 max-sm:hidden;
 
-            p {
-                @apply text-sm cursor-pointer hover:underline transition-all;
+            .nav-link {
+                @apply text-sm cursor-pointer hover:underline transition-all border-0 bg-transparent p-0 text-black;
             }
         }
 
@@ -567,6 +567,10 @@ body {
             li {
                 @apply absolute z-0 select-none flex items-center flex-col;
 
+                button {
+                    @apply flex items-center flex-col border-0 bg-transparent p-0 cursor-pointer;
+                }
+
                 img {
                     @apply group-hover:bg-gray-950/10 p-1 rounded-md;
                 }
@@ -577,15 +581,107 @@ body {
             }
         }
     }
+
+    #finder {
+        .sidebar li button {
+            @apply flex items-center gap-2 border-0 bg-transparent p-0 cursor-pointer text-inherit w-full;
+        }
+
+        .content li button {
+            @apply flex items-center flex-col gap-3 border-0 bg-transparent p-0 cursor-pointer;
+        }
+    }
+
+    /* ---------- iPhone shell ---------- */
+
+    #ios-status-bar {
+        @apply fixed top-0 left-0 right-0 z-[9000] flex items-center justify-between px-6 pt-3 pb-1 text-white select-none pointer-events-none;
+
+        .time {
+            @apply text-sm font-semibold drop-shadow;
+        }
+
+        .indicators {
+            @apply flex items-center gap-1.5 drop-shadow;
+        }
+    }
+
+    #iphone-home {
+        @apply fixed inset-0 flex flex-col justify-between px-5 pt-16 pb-10 select-none;
+
+        .app-grid {
+            @apply grid grid-cols-4 gap-x-4 gap-y-7 content-start;
+        }
+
+        .app-icon {
+            @apply flex flex-col items-center gap-1.5 border-0 bg-transparent p-0 cursor-pointer;
+
+            img {
+                @apply size-16 rounded-[1.2rem] object-cover shadow-lg;
+            }
+
+            span {
+                @apply text-xs text-white font-medium drop-shadow;
+            }
+        }
+
+        .ios-dock {
+            @apply flex items-center justify-around bg-white/25 backdrop-blur-xl rounded-[2rem] px-4 py-3 mx-1;
+
+            .app-icon img {
+                @apply size-14;
+            }
+        }
+    }
+
+    #home-indicator {
+        @apply fixed bottom-1 left-1/2 -translate-x-1/2 z-[9500] border-0 bg-transparent px-10 py-2 cursor-pointer;
+
+        span {
+            @apply block w-32 h-1.5 rounded-full bg-white/80 shadow;
+        }
+    }
 }
 
-@media (max-width: 768px) {
-    #safari {
-        @apply top-14 rounded-none;
-        width: 100vw;
-        height: calc(100dvh - 3.5rem);
-        transform: translateX(-50%);
+@media (max-width: 767px) {
+    /* Every window becomes a full-screen iOS app sheet. */
+    section.mobile-app {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        max-width: none !important;
+        height: 100dvh !important;
+        border-radius: 0 !important;
+        translate: none !important; /* Tailwind v4 translate utilities live outside `transform`; GSAP can't clear them. */
+        display: flex;
+        flex-direction: column;
+    }
 
+    section.mobile-app > #window-header {
+        @apply pt-12 flex-none;
+    }
+
+    /* Everything after the header scrolls. */
+    section.mobile-app > *:not(#window-header) {
+        @apply flex-1 min-h-0 overflow-y-auto;
+    }
+
+    /* iOS apps have no minimize/maximize; keep the close dot as the exit affordance. */
+    section.mobile-app #window-controls {
+        .minimize,
+        .maximize {
+            @apply hidden;
+        }
+
+        .close {
+            @apply size-4;
+        }
+    }
+
+    #safari {
         #window-header {
             @apply gap-3 px-3;
         }
@@ -595,18 +691,89 @@ body {
         }
 
         .blog {
-            @apply max-h-none h-[calc(100dvh-7rem)];
+            @apply max-h-none;
         }
     }
 
     #resume {
-        @apply top-14 rounded-none;
-        width: 100vw;
-        height: calc(100dvh - 3.5rem);
-        transform: translateX(-50%);
-
         .resume-scroll {
-            @apply p-3 h-[calc(100dvh-7rem)];
+            @apply p-3;
+        }
+    }
+
+    /* Finder becomes a Files-style app: sidebar as horizontal chips, content as a grid. */
+    #finder {
+        > div:not(#window-header) {
+            @apply flex-col;
+        }
+
+        .sidebar {
+            @apply w-full flex-row overflow-x-auto space-y-0 gap-2 p-3 border-r-0 border-b flex-none;
+
+            > div {
+                @apply flex items-center gap-2;
+
+                h3 {
+                    @apply hidden;
+                }
+
+                ul {
+                    @apply flex gap-2 space-y-0;
+                }
+
+                li p {
+                    @apply whitespace-nowrap;
+                }
+            }
+        }
+
+        .content {
+            @apply max-w-none grid grid-cols-3 gap-6 content-start p-6 overflow-y-auto;
+
+            li {
+                position: static !important;
+
+                p {
+                    @apply w-auto max-w-24 text-gray-800;
+                }
+            }
+        }
+    }
+
+    /* Photos: simple scrolling list. */
+    #photos {
+        > div:not(#window-header) {
+            @apply flex-col;
+        }
+
+        .sidebar {
+            @apply w-full flex-row border-r-0 border-b p-3 flex-none;
+        }
+
+        .gallery ul {
+            @apply flex flex-col gap-3;
+
+            li {
+                img {
+                    @apply w-full h-auto rounded-lg;
+                }
+            }
+        }
+    }
+
+    #terminal {
+        .techstack {
+            .label {
+                @apply ms-0;
+            }
+
+            .content > li {
+                @apply grid-cols-[1rem_minmax(0,1fr)] gap-y-1;
+
+                ul {
+                    @apply col-span-2;
+                }
+            }
         }
     }
 }
