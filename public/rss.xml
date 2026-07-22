@@ -6,6 +6,13 @@
     <description>Notes on frontend architecture, product delivery, and building polished developer experiences.</description>
     <language>en</language>
     <item>
+      <title>Turning a desktop portfolio into an iPhone</title>
+      <link>https://ivakobalava.dev/blog/turning-a-desktop-portfolio-into-an-iphone</link>
+      <guid>https://ivakobalava.dev/blog/turning-a-desktop-portfolio-into-an-iphone</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Adding an iOS shell to a macOS-style portfolio with one route tree, one window store, and two chromes, plus a Tailwind v4 gotcha that cost an hour.</description>
+    </item>
+    <item>
       <title>Building a Safari window inside a desktop portfolio</title>
       <link>https://ivakobalava.dev/blog/building-safari-inside-a-desktop-portfolio</link>
       <guid>https://ivakobalava.dev/blog/building-safari-inside-a-desktop-portfolio</guid>
