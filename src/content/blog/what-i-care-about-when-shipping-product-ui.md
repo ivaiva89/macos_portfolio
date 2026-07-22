@@ -3,16 +3,16 @@ title: What I care about when shipping product UI
 slug: what-i-care-about-when-shipping-product-ui
 excerpt: A short list of the product qualities I watch for when turning requirements into interfaces people actually trust.
 publishedAt: 2026-01-14
-updatedAt: 2026-01-20
+updatedAt: 2026-07-22
 tags:
   - Product
   - UI
   - Delivery
-coverImage: /images/iva.png
+coverImage: /images/iva.webp
 draft: false
 ---
 
-Good product UI is rarely about decoration. It is about reducing hesitation.
+Good product UI reduces hesitation. Everything below is in service of that.
 
 ## Signals that matter
 
@@ -35,6 +35,6 @@ Use semantic HTML where it helps screen readers and document structure.
 
 Add images only when they improve understanding.
 
-![Workspace preview](/images/wallpaper.png)
+![Workspace preview](/images/wallpaper.webp)
 
 Linking supporting references should feel natural, not promotional. For example, I keep my public profile hub on [ivakobalava.dev](https://ivakobalava.dev/).

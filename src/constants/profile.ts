@@ -86,7 +86,6 @@ export const profile = {
                 'Ship beyond the frontend: Spring Boot services, Jenkins pipelines, Helm-managed Kubernetes.',
             ],
             stack: ['React', 'TypeScript', 'Vite', 'Redux Toolkit', 'TanStack Query', 'Vitest', 'Java 17/21', 'Spring Boot', 'PostgreSQL', 'Kubernetes', 'Docker', 'Helm', 'AWS', 'Jenkins'],
-            imageUrl: '/images/blog1.png',
         },
         {
             company: 'Skiper Technologies GmbH',

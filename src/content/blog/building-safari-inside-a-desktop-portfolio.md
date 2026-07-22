@@ -3,7 +3,7 @@ title: Building a Safari window inside a desktop portfolio
 slug: building-safari-inside-a-desktop-portfolio
 excerpt: How I approached turning a portfolio into a small operating-system illusion without losing clarity or performance.
 publishedAt: 2026-03-10
-updatedAt: 2026-03-10
+updatedAt: 2026-07-22
 tags:
   - React
   - UX
@@ -12,7 +12,7 @@ coverImage: /images/blog1.png
 draft: false
 ---
 
-The portfolio is intentionally not a generic landing page. It behaves more like a familiar workspace, where the content lives behind apps, folders, and windows.
+This portfolio behaves like a small operating system: content lives behind apps, folders, and windows instead of sections on a scrolling page.
 
 ## Why the desktop metaphor works
 

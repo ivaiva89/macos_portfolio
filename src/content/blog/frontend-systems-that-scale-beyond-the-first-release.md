@@ -3,12 +3,12 @@ title: Frontend systems that scale beyond the first release
 slug: frontend-systems-that-scale-beyond-the-first-release
 excerpt: The difference between shipping a fast v1 and building a frontend that still feels coherent after dozens of features.
 publishedAt: 2026-02-21
-updatedAt: 2026-02-25
+updatedAt: 2026-07-22
 tags:
   - Frontend
   - Systems
   - TypeScript
-coverImage: /images/skiper.png
+coverImage: /images/skiper.webp
 draft: false
 ---
 
