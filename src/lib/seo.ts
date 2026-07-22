@@ -33,7 +33,7 @@ const ensureLink = (selector: string, rel: string, href: string) => {
     element.setAttribute('href', href)
 }
 
-export const applySeo = ({ title, description, path, image = `${SITE_URL}/images/blog1.png`, type = 'website' }: SeoInput) => {
+export const applySeo = ({ title, description, path, image = `${SITE_URL}/images/og-default.jpg`, type = 'website' }: SeoInput) => {
     const canonicalUrl = `${SITE_URL}${path}`
 
     document.title = title

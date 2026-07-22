@@ -8,7 +8,7 @@ tags:
   - Frontend
   - Systems
   - TypeScript
-coverImage: /images/skiper.webp
+coverImage: /images/covers/frontend-systems-that-scale-beyond-the-first-release.jpg
 draft: false
 ---
 

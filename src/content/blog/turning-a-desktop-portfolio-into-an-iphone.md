@@ -8,7 +8,7 @@ tags:
   - React
   - CSS
   - Architecture
-coverImage: /images/wallpaper.webp
+coverImage: /images/covers/turning-a-desktop-portfolio-into-an-iphone.jpg
 draft: false
 ---
 

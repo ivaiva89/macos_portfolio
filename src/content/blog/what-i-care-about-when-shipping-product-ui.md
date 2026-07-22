@@ -8,7 +8,7 @@ tags:
   - Product
   - UI
   - Delivery
-coverImage: /images/iva.webp
+coverImage: /images/covers/what-i-care-about-when-shipping-product-ui.jpg
 draft: false
 ---
 
@@ -34,7 +34,5 @@ Use semantic HTML where it helps screen readers and document structure.
 `<article>` and `<section>` are not magic, but they make intent clearer when the content actually is an article or a section.
 
 Add images only when they improve understanding.
-
-![Workspace preview](/images/wallpaper.webp)
 
 Linking supporting references should feel natural, not promotional. For example, I keep my public profile hub on [ivakobalava.dev](https://ivakobalava.dev/).

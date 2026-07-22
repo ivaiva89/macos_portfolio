@@ -82,7 +82,7 @@ const main = async () => {
         title: `${blogTitle} | ${siteName}`,
         description: blogDescription,
         url: `${siteUrl}/blog`,
-        image: `${siteUrl}/images/blog1.png`,
+        image: `${siteUrl}/images/og-default.jpg`,
         type: 'website',
     })
     const indexContent = `<main><h1>${escapeHtml(blogTitle)}</h1><p>${escapeHtml(blogDescription)}</p><ul>${posts

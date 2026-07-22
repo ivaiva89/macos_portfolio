@@ -8,7 +8,7 @@ tags:
   - React
   - UX
   - Architecture
-coverImage: /images/blog1.png
+coverImage: /images/covers/building-safari-inside-a-desktop-portfolio.jpg
 draft: false
 ---
 

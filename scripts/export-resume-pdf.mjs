@@ -51,7 +51,8 @@ try {
     await mkdir(outputDir, { recursive: true })
     await mkdir(publicFilesDir, { recursive: true })
 
-    const browser = await chromium.launch()
+    // CHROMIUM_PATH lets CI/cloud environments point at a preinstalled browser.
+    const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined })
     const page = await browser.newPage()
 
     await page.goto(previewUrl, { waitUntil: 'networkidle' })

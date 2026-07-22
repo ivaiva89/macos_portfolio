@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "generate:content": "node scripts/generate-blog-assets.mjs",
+        "generate:covers": "node scripts/generate-covers.mjs",
         "predev": "npm run generate:content",
         "dev": "vite",
         "prebuild": "npm run generate:content",
