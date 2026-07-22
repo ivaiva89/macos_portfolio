@@ -38,6 +38,9 @@ export interface LocationRoot extends FolderItem {
     type: string
 }
 
+const stackform = profile.projects.find((project) => project.name === 'StackForm')!
+const devapply = profile.projects.find((project) => project.name === 'DevApply')!
+
 const WORK_LOCATION: LocationRoot = {
     id: 1,
     type: 'work',
@@ -146,12 +149,12 @@ const WORK_LOCATION: LocationRoot = {
                     kind: 'file',
                     fileType: 'txt',
                     position: 'top-5 left-10',
-                    subtitle: `${profile.projects[0].role} · ${profile.projects[0].period}`,
-                    image: profile.projects[0].imageUrl,
+                    subtitle: `${devapply.role} · ${devapply.period}`,
+                    image: devapply.imageUrl,
                     sections: [
-                        { paragraphs: [profile.projects[0].summary] },
-                        ...(profile.projects[0].highlights ? [{ heading: 'Highlights', bullets: profile.projects[0].highlights }] : []),
-                        { heading: 'Stack', paragraphs: [profile.projects[0].stack.join(' · ')] },
+                        { paragraphs: [devapply.summary] },
+                        ...(devapply.highlights ? [{ heading: 'Highlights', bullets: devapply.highlights }] : []),
+                        { heading: 'Stack', paragraphs: [devapply.stack.join(' · ')] },
                     ],
                 },
                 {
@@ -160,8 +163,50 @@ const WORK_LOCATION: LocationRoot = {
                     icon: '/images/safari.png',
                     kind: 'file',
                     fileType: 'url',
-                    href: profile.projects[0].link,
+                    href: devapply.link,
                     position: 'top-10 right-20',
+                },
+            ],
+        },
+        {
+            id: 11,
+            name: 'StackForm',
+            icon: '/images/folder.png',
+            kind: 'folder',
+            position: 'top-72 left-20',
+            windowPosition: 'top-[14vh] right-60',
+            children: [
+                {
+                    id: 1,
+                    name: 'StackForm.txt',
+                    icon: '/images/txt.png',
+                    kind: 'file',
+                    fileType: 'txt',
+                    position: 'top-5 left-10',
+                    subtitle: `${stackform.role} · ${stackform.period}`,
+                    sections: [
+                        { paragraphs: [stackform.summary] },
+                        ...(stackform.highlights ? [{ heading: 'Highlights', bullets: stackform.highlights }] : []),
+                        { heading: 'Stack', paragraphs: [stackform.stack.join(' · ')] },
+                    ],
+                },
+                {
+                    id: 2,
+                    name: 'StackForm docs',
+                    icon: '/images/safari.png',
+                    kind: 'file',
+                    fileType: 'url',
+                    href: stackform.link,
+                    position: 'top-10 right-20',
+                },
+                {
+                    id: 3,
+                    name: 'npm: @stackform/core',
+                    icon: '/images/safari.png',
+                    kind: 'file',
+                    fileType: 'url',
+                    href: 'https://www.npmjs.com/package/@stackform/core',
+                    position: 'top-52 right-40',
                 },
             ],
         },

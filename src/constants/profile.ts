@@ -105,6 +105,20 @@ export const profile = {
     ] satisfies ResumeExperience[],
     projects: [
         {
+            name: 'StackForm',
+            role: 'Creator & Maintainer',
+            period: '2026 - Present',
+            summary: 'Open-source headless form library for React: one component per field instead of 10-15 lines of shadcn/ui + React Hook Form boilerplate.',
+            highlights: [
+                '7 packages on npm (@stackform/core plus adapters), v1.1.0 stable.',
+                'Adapter-agnostic: the same field API drives React Hook Form, TanStack Form, or native React state.',
+                'Released via Changesets and npm Trusted Publishing (OIDC), no static tokens.',
+                'Dogfooded on DevApply before the stable release.',
+            ],
+            stack: ['TypeScript', 'React', 'pnpm workspaces', 'tsup', 'Vitest', 'shadcn/ui'],
+            link: 'https://stack-form-docs.vercel.app',
+        },
+        {
             name: 'DevApply',
             role: 'Solo-built',
             period: 'April 2026',
