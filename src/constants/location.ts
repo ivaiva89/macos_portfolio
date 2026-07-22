@@ -104,7 +104,7 @@ const WORK_LOCATION: LocationRoot = {
                     kind: 'file',
                     fileType: 'img',
                     position: 'top-52 right-80',
-                    imageUrl: '/images/skiper.png',
+                    imageUrl: '/images/skiper.webp',
                 },
                 {
                     id: 5,
@@ -166,7 +166,7 @@ const ABOUT_LOCATION: LocationRoot = {
             fileType: 'txt',
             position: 'top-50 left-5',
             subtitle: profile.aboutTitle,
-            image: '/images/iva.png',
+            image: '/images/iva.webp',
             description: [...profile.aboutParagraphs, `${profile.education.institution} · ${profile.education.degree}`],
         },
     ],
@@ -203,7 +203,7 @@ const TRASH_LOCATION: LocationRoot = {
             kind: 'file',
             fileType: 'img',
             position: 'top-10 left-10',
-            imageUrl: '/images/trash-1.png',
+            imageUrl: '/images/trash-1.webp',
         },
         {
             id: 2,
@@ -212,7 +212,7 @@ const TRASH_LOCATION: LocationRoot = {
             kind: 'file',
             fileType: 'img',
             position: 'top-40 left-80',
-            imageUrl: '/images/trash-2.png',
+            imageUrl: '/images/trash-2.webp',
         },
     ],
 }

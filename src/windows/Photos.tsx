@@ -2,9 +2,9 @@ import WindowWrapper from '#hoc/WindowWrapper'
 import { WindowControls } from '#components'
 
 const galleryImages = [
-    { src: '/images/skiper.png', alt: 'Skiper project preview' },
-    { src: '/images/iva.png', alt: 'Portrait of Iva' },
-    { src: '/images/wallpaper.png', alt: 'Desktop wallpaper preview' },
+    { src: '/images/skiper.webp', alt: 'Skiper project preview' },
+    { src: '/images/iva.webp', alt: 'Portrait of Iva' },
+    { src: '/images/wallpaper.webp', alt: 'Desktop wallpaper preview' },
     { src: '/macbook.png', alt: 'MacBook portfolio frame' },
 ]
 

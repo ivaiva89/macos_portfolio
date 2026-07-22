@@ -12,7 +12,7 @@ const Contact = () => {
             </div>
 
             <div className="contact-content">
-                <img src="/images/iva.png" alt={profile.fullName} className="w-24 h-24 object-cover rounded-full" />
+                <img src="/images/iva.webp" alt={profile.fullName} className="w-24 h-24 object-cover rounded-full" />
 
                 <h3>{profile.fullName}</h3>
                 <p>{profile.role} based in {profile.location}.</p>

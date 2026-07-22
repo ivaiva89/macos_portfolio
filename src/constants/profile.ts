@@ -97,7 +97,7 @@ export const profile = {
             ],
             stack: ['React', 'TypeScript', 'Vite', 'TanStack Query', 'shadcn/ui', 'Java Spring Boot', 'AWS'],
             link: 'https://reserve.skiper.io/en',
-            imageUrl: '/images/skiper.png',
+            imageUrl: '/images/skiper.webp',
         },
     ] satisfies ResumeExperience[],
     projects: [
