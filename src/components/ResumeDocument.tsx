@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import { profile } from '#constants/profile'
 
 const summaryText =
-    'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. At GSG, top contributor by commit volume (~30%) on a 20-engineer team at a live EU logistics platform — 490+ commits, 200+ PRs — while also delivering backend services and CI/CD pipelines. At Skiper, sole frontend owner: migrated CRA to Vite (build time 52s → 3s), refactored a 280-file flat codebase into a 5-layer Feature-Sliced Design architecture, and built a 3-language i18n system. Stack spans React, TypeScript, TanStack Query, Java/Spring Boot, Node.js, and AWS.'
+    'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. At GSG, top contributor by commit volume (~30%) on a 20-engineer team at a live EU logistics platform (490+ commits, 200+ PRs), while also delivering backend services and CI/CD pipelines. At Skiper, sole frontend owner: migrated CRA to Vite (build time 52s → 3s), refactored a 280-file flat codebase into a 5-layer Feature-Sliced Design architecture, and built a 3-language i18n system. Stack spans React, TypeScript, TanStack Query, Java/Spring Boot, Node.js, and AWS.'
 
 const skillRows = [
     {
@@ -28,7 +28,7 @@ const gsgSections = [
         title: 'Frontend',
         items: [
             'Top frontend contributor: 490+ commits, 160+ tasks delivered, 200+ pull requests across 4 years.',
-            'Built multi-view planning and scheduling interfaces (daily/weekly/historical) with dynamic filtering, forecasting, and scenario comparison — core operational tools across the logistics platform.',
+            'Built multi-view planning and scheduling interfaces (daily/weekly/historical) with dynamic filtering, forecasting, and scenario comparison, the core operational tools of the logistics platform.',
             'Established frontend data-layer patterns using Redux Toolkit and TanStack Query, standardizing data fetching, cache invalidation, and domain state across a 25+ engineer codebase.',
             'Built and maintained a shared component library (forms, tables, dialogs, filters) adopted across the team to eliminate duplicated UI code and enforce consistent patterns.',
             'Implemented frontend RBAC with permission-driven rendering, gating UI elements and routes based on user roles.',
@@ -138,7 +138,7 @@ const ResumeDocument = ({ printMode = false }: { printMode?: boolean }) => {
                     <article className="resume-print-avoid mb-[9px]">
                         <div className="flex flex-wrap items-baseline justify-between gap-2">
                             <h3 className="text-[10pt] font-bold text-stone-900">
-                                {profile.experience[0].role} — {profile.experience[0].company}
+                                {profile.experience[0].role} · {profile.experience[0].company}
                             </h3>
                             <span className="shrink-0 whitespace-nowrap text-[8.2pt] text-stone-500">{profile.experience[0].period}</span>
                         </div>
@@ -173,7 +173,7 @@ const ResumeDocument = ({ printMode = false }: { printMode?: boolean }) => {
                     <article className="resume-print-avoid">
                         <div className="flex flex-wrap items-baseline justify-between gap-2">
                             <h3 className="text-[10pt] font-bold text-stone-900">
-                                {profile.experience[1].role} — {profile.experience[1].company}
+                                {profile.experience[1].role} · {profile.experience[1].company}
                             </h3>
                             <span className="shrink-0 whitespace-nowrap text-[8.2pt] text-stone-500">{profile.experience[1].period}</span>
                         </div>
