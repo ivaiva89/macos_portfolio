@@ -184,6 +184,7 @@ const WORK_LOCATION: LocationRoot = {
                     fileType: 'txt',
                     position: 'top-5 left-10',
                     subtitle: `${stackform.role} · ${stackform.period}`,
+                    image: stackform.imageUrl,
                     sections: [
                         { paragraphs: [stackform.summary] },
                         ...(stackform.highlights ? [{ heading: 'Highlights', bullets: stackform.highlights }] : []),

@@ -117,6 +117,7 @@ export const profile = {
             ],
             stack: ['TypeScript', 'React', 'pnpm workspaces', 'tsup', 'Vitest', 'shadcn/ui'],
             link: 'https://stack-form-docs.vercel.app',
+            imageUrl: '/images/products/stackform.jpg',
         },
         {
             name: 'DevApply',
@@ -126,7 +127,7 @@ export const profile = {
             highlights: ['Designed, built, and shipped solo in a month.', 'Live at devapply.app, free to use.'],
             stack: ['Next.js', 'Prisma', 'Neon', 'Clerk', 'PostHog', 'Resend'],
             link: 'https://devapply.app',
-            imageUrl: '/images/plain.png',
+            imageUrl: '/images/products/devapply.jpg',
         },
     ] satisfies ResumeProject[],
     education: {

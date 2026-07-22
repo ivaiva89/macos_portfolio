@@ -2,10 +2,10 @@ import WindowWrapper from '#hoc/WindowWrapper'
 import { WindowControls } from '#components'
 
 const galleryImages = [
-    { src: '/images/skiper.webp', alt: 'Skiper project preview' },
-    { src: '/images/iva.webp', alt: 'Portrait of Iva' },
-    { src: '/images/wallpaper.webp', alt: 'Desktop wallpaper preview' },
-    { src: '/macbook.png', alt: 'MacBook portfolio frame' },
+    { src: '/images/products/skiper.jpg', alt: 'Skiper reservation platform' },
+    { src: '/images/products/devapply.jpg', alt: 'DevApply job application tracker' },
+    { src: '/images/products/stackform.jpg', alt: 'StackForm open-source form library' },
+    { src: '/images/og-default.jpg', alt: 'ivakobalava.dev' },
 ]
 
 const Photos = () => {
