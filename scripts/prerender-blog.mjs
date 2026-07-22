@@ -11,88 +11,23 @@
  * Vercel serves matching static files before applying the SPA rewrite, so these
  * pages are what crawlers receive; the React app still takes over in the browser
  * (createRoot replaces the prerendered #root content on load).
+ *
+ * Posts come pre-parsed and pre-highlighted from src/generated/blog-posts.json
+ * (written by scripts/generate-blog-assets.mjs during prebuild).
  */
-import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { marked } from 'marked'
 
 const rootDir = process.cwd()
-const contentDir = path.join(rootDir, 'src/content/blog')
 const distDir = path.join(rootDir, 'dist')
+const generatedPostsPath = path.join(rootDir, 'src/generated/blog-posts.json')
 const siteUrl = 'https://ivakobalava.dev'
 const siteName = 'Iveri Kobalava'
 const blogTitle = 'Articles'
 const blogDescription = 'Notes on frontend architecture, product delivery, and building polished developer experiences.'
 
-marked.setOptions({ gfm: true })
-
 const escapeHtml = (value) =>
     String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;')
-
-const parseScalarValue = (value) => {
-    const normalized = value.trim()
-    if (normalized === 'true') return true
-    if (normalized === 'false') return false
-    if ((normalized.startsWith('"') && normalized.endsWith('"')) || (normalized.startsWith("'") && normalized.endsWith("'"))) {
-        return normalized.slice(1, -1)
-    }
-    return normalized
-}
-
-const parseFrontmatter = (source) => {
-    const match = source.match(/^---\n([\s\S]*?)\n---\n?/)
-    if (!match) return { data: {}, content: source }
-
-    const data = {}
-    let activeArrayKey = null
-
-    for (const line of match[1].split('\n')) {
-        const trimmed = line.trim()
-        if (!trimmed) continue
-        if (trimmed.startsWith('- ') && activeArrayKey) {
-            data[activeArrayKey].push(trimmed.slice(2).trim())
-            continue
-        }
-        const separatorIndex = line.indexOf(':')
-        if (separatorIndex === -1) continue
-        const key = line.slice(0, separatorIndex).trim()
-        const rawValue = line.slice(separatorIndex + 1).trim()
-        if (!rawValue) {
-            data[key] = []
-            activeArrayKey = key
-            continue
-        }
-        data[key] = parseScalarValue(rawValue)
-        activeArrayKey = null
-    }
-
-    return { data, content: source.slice(match[0].length) }
-}
-
-const readPosts = async () => {
-    const filenames = await readdir(contentDir)
-    const posts = await Promise.all(
-        filenames
-            .filter((filename) => filename.endsWith('.md'))
-            .map(async (filename) => {
-                const source = await readFile(path.join(contentDir, filename), 'utf8')
-                const { data, content } = parseFrontmatter(source)
-                return {
-                    title: data.title,
-                    slug: data.slug,
-                    excerpt: data.excerpt,
-                    publishedAt: data.publishedAt,
-                    updatedAt: data.updatedAt ?? data.publishedAt,
-                    tags: Array.isArray(data.tags) ? data.tags : [],
-                    coverImage: data.coverImage,
-                    draft: Boolean(data.draft),
-                    html: marked.parse(content),
-                }
-            }),
-    )
-
-    return posts.filter((post) => !post.draft).sort((left, right) => new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime())
-}
 
 /** Replace the shell's head meta with route-specific values. */
 const applyMeta = (shell, { title, description, url, image, type }) => {
@@ -140,7 +75,7 @@ const injectJsonLd = (shell, jsonLd) => shell.replace('</head>', `    <script ty
 
 const main = async () => {
     const shell = await readFile(path.join(distDir, 'index.html'), 'utf8')
-    const posts = await readPosts()
+    const posts = JSON.parse(await readFile(generatedPostsPath, 'utf8')).filter((post) => !post.draft)
 
     // Blog index page.
     const indexHtml = applyMeta(shell, {

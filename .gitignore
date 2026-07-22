@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# generated content (rebuilt by npm run generate:content)
+src/generated/
