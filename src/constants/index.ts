@@ -1,4 +1,4 @@
-import { profile } from './profile'
+import { profile, skillName } from './profile'
 
 const navLinks = [
     {
@@ -42,7 +42,8 @@ const navIcons = [
     },
 ]
 
-const techStack = profile.skills
+// Portfolio surface: plain skill names, parenthetical details dropped. See profile.ts.
+const techStack = profile.skills.map((group) => ({ category: group.category, items: group.items.map(skillName) }))
 
 const dockApps = [
     {

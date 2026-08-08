@@ -1,4 +1,4 @@
-import { profile } from './profile'
+import { featuredHighlights, profile } from './profile'
 
 export type FileType = 'txt' | 'url' | 'img' | 'fig' | 'pdf'
 
@@ -66,8 +66,8 @@ const WORK_LOCATION: LocationRoot = {
                     subtitle: `${profile.experience[0].role} · ${profile.experience[0].period}`,
                     image: profile.experience[0].imageUrl,
                     sections: [
-                        { paragraphs: [profile.experience[0].summary] },
-                        { heading: 'Highlights', bullets: profile.experience[0].highlights },
+                        { paragraphs: [profile.experience[0].summaryShort ?? profile.experience[0].summary] },
+                        { heading: 'Highlights', bullets: featuredHighlights(profile.experience[0].highlights) },
                     ],
                 },
                 {
@@ -100,8 +100,8 @@ const WORK_LOCATION: LocationRoot = {
                     subtitle: `${profile.experience[1].role} · ${profile.experience[1].period}`,
                     image: profile.experience[1].imageUrl,
                     sections: [
-                        { paragraphs: [profile.experience[1].summary] },
-                        { heading: 'Highlights', bullets: profile.experience[1].highlights },
+                        { paragraphs: [profile.experience[1].summaryShort ?? profile.experience[1].summary] },
+                        { heading: 'Highlights', bullets: featuredHighlights(profile.experience[1].highlights) },
                     ],
                 },
                 {

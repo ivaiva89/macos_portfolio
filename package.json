@@ -9,8 +9,9 @@
         "predev": "npm run generate:content",
         "dev": "vite",
         "prebuild": "npm run generate:content",
-        "build": "tsc --noEmit -p tsconfig.app.json && vite build && node scripts/prerender-blog.mjs",
-        "export:resume-pdf": "npm run build && node scripts/export-resume-pdf.mjs",
+        "verify:resume": "node scripts/check-resume-fresh.mjs",
+    "build": "npm run verify:resume && tsc --noEmit -p tsconfig.app.json && vite build && node scripts/prerender-blog.mjs",
+        "export:resume-pdf": "SKIP_RESUME_CHECK=1 npm run build && node scripts/export-resume-pdf.mjs",
         "lint": "eslint .",
         "preview": "vite preview"
     },
