@@ -25,3 +25,7 @@ dist-ssr
 
 # generated content (rebuilt by npm run generate:content)
 src/generated/
+
+# local scratch
+.claude/
+_to_delete/

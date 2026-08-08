@@ -1,15 +1,14 @@
-import { copyFile, mkdir } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { spawn } from 'node:child_process'
 import { chromium } from 'playwright'
+import { computeResumeHash, hashFile } from './resume-hash.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '..')
-const outputDir = path.join(rootDir, 'exports')
 const publicFilesDir = path.join(rootDir, 'public', 'files')
 const publicOutputFile = path.join(publicFilesDir, 'resume.pdf')
-const archiveOutputFile = path.join(outputDir, 'Iveri_Kobalava_Resume.pdf')
 const viteBin = path.join(rootDir, 'node_modules', '.bin', process.platform === 'win32' ? 'vite.cmd' : 'vite')
 const previewPort = '4173'
 const previewUrl = `http://127.0.0.1:${previewPort}/resume/print`
@@ -48,7 +47,6 @@ const preview = spawn(viteBin, ['preview', '--host', '127.0.0.1', '--port', prev
 
 try {
     await waitForServer(preview)
-    await mkdir(outputDir, { recursive: true })
     await mkdir(publicFilesDir, { recursive: true })
 
     // CHROMIUM_PATH lets CI/cloud environments point at a preinstalled browser.
@@ -66,10 +64,10 @@ try {
     })
 
     await browser.close()
-    await copyFile(publicOutputFile, archiveOutputFile)
+    await writeFile(hashFile, `${await computeResumeHash()}\n`)
 
     console.log(`Resume PDF generated at ${publicOutputFile}`)
-    console.log(`Archive copy written to ${archiveOutputFile}`)
+    console.log(`Freshness hash written to ${hashFile}`)
 } finally {
     preview.kill('SIGTERM')
 }
