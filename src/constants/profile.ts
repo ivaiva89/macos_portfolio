@@ -94,14 +94,14 @@ export interface ProfileLink {
 }
 
 export const profile = {
-    fullName: 'Iveri Kobalava',
+    fullName: 'Iveri (Iva) Kobalava',
     shortName: 'Iveri',
     displayHandle: '@Iveri',
     role: 'Senior Frontend Engineer',
-    location: 'Georgia (Remote)',
+    location: 'Tbilisi, Georgia (UTC+4)',
     headline: 'I build product systems that stay clear under scale: frontend architecture, backend services, and delivery.',
     summary:
-        'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. At GSG, top contributor by commit volume (~30%) on a 20-engineer team at a live EU logistics platform (490+ commits, 200+ PRs), while also delivering backend services and CI/CD pipelines. At Skiper, sole frontend owner: migrated CRA to Vite (build time 52s → 3s), refactored a 280-file flat codebase into a 5-layer Feature-Sliced Design architecture, and built a 3-language i18n system. Maintainer of StackForm, an open-source React form library (7 packages on npm). Stack spans React, TypeScript, TanStack Query, Java/Spring Boot, Node.js, and AWS.',
+        'Frontend engineer with 5 years building operational software people use all day: planning and scheduling tools for an EU logistics platform, and a restaurant reservation product I own end to end as co-founder. I work at the architecture level. Recent work: production builds cut from 52s to 3s, a 280-file codebase restructured into a Feature-Sliced architecture now at 559 files with zero boundary violations, and a React Native app shipped solo to both app stores. Also ship Java/Spring Boot and Node when a feature needs the API written too.',
     summaryShort:
         'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. At GSG, top contributor by commit volume on a live EU logistics platform while also delivering backend services and CI/CD pipelines. At Skiper, sole frontend owner, leading architecture, platform migrations, and multilingual product delivery across a growing SaaS product.',
     aboutTitle: 'Frontend-led fullstack engineer with product and platform depth',
@@ -116,7 +116,11 @@ export const profile = {
     skills: [
         {
             category: 'Frontend',
-            items: ['React', 'TypeScript', 'Next.js', 'Redux Toolkit', 'TanStack Query', 'Material UI', 'shadcn/ui', 'Vite', { name: 'Feature-Sliced Design', detail: 'FSD' }],
+            items: ['React', 'TypeScript', 'Next.js', 'React Native / Expo', 'Redux Toolkit', 'TanStack Query', 'React Hook Form', 'Zod', 'Material UI', 'shadcn/ui', 'Tailwind', 'Vite', { name: 'Feature-Sliced Design', detail: 'FSD' }],
+        },
+        {
+            category: 'Testing',
+            items: ['Vitest', 'React Testing Library', 'MSW', 'Jest'],
         },
         {
             category: 'Backend',
@@ -124,7 +128,7 @@ export const profile = {
         },
         {
             category: 'Infra & DevOps',
-            items: ['Kubernetes', 'Docker', 'Helm', { name: 'AWS', detail: 'Secrets Manager, STS, OIDC' }, 'Jenkins', 'SonarQube', 'JaCoCo', 'Trivy', 'Micrometer', 'Prometheus'],
+            items: ['Kubernetes', 'Docker', 'Helm', { name: 'AWS', detail: 'Secrets Manager, STS, OIDC' }, 'Jenkins', 'SonarQube', 'Prometheus'],
         },
         {
             category: 'Languages',
@@ -138,140 +142,71 @@ export const profile = {
             role: 'Senior Software Engineer',
             period: 'June 2021 - Present',
             summary:
-                'EU e-commerce logistics platform for parcel routing optimization and truck line scheduling across Europe. Top contributor by commit volume (~30%) on a 20+ engineer team, working across frontend, backend microservices, and DevOps.',
+                'EU e-commerce logistics platform for parcel routing and truck-line scheduling across Europe. Frontend lead in practice on a 20+ engineer team, also shipping backend services and CI/CD.',
             summaryShort: 'EU logistics platform for e-commerce parcel routing and truck-line scheduling, live and used by operators across Europe.',
             highlights: [
                 {
-                    group: 'Frontend',
-                    text: 'Top frontend contributor: 490+ commits, 160+ tasks delivered, 200+ pull requests across 4 years.',
-                    short: '490+ commits and 200+ PRs over 4 years, top contributor on a 20+ engineer team.',
-                    featured: true,
-                },
-                {
-                    group: 'Frontend',
-                    text: 'Built multi-view planning and scheduling interfaces (daily/weekly/historical) with dynamic filtering, forecasting, and scenario comparison, the core operational tools of the logistics platform.',
+                    text: 'Built the core planning and scheduling interfaces (daily, weekly and historical views with dynamic filtering, forecasting and scenario comparison) that operations staff run the business on.',
                     short: 'Built the multi-view planning and scheduling tools operators use every day.',
                     featured: true,
                 },
                 {
-                    group: 'Frontend',
-                    text: 'Established frontend data-layer patterns using Redux Toolkit and TanStack Query, standardizing data fetching, cache invalidation, and domain state across a 25+ engineer codebase.',
-                    short: 'Set the frontend data-layer patterns and maintain the shared component library the whole team builds on.',
+                    text: 'Set the frontend data-layer standard used across a 25+ engineer codebase: Redux Toolkit for UI state, TanStack Query for server state, plus a shared cache-invalidation policy that ended a recurring class of stale-data bugs.',
+                    short: 'Set the frontend data-layer patterns the whole team builds on.',
                     featured: true,
                 },
                 {
-                    group: 'Frontend',
-                    text: 'Built and maintained a shared component library (forms, tables, dialogs, filters) adopted across the team to eliminate duplicated UI code and enforce consistent patterns.',
+                    text: 'Built and maintained the shared component library (forms, tables, dialogs, filters) every frontend team builds on, removing duplicated UI across the platform.',
+                    short: 'Built and maintain the shared component library used across the team.',
+                    featured: true,
                 },
                 {
-                    group: 'Frontend',
-                    text: 'Implemented frontend RBAC with permission-driven rendering, gating UI elements and routes based on user roles.',
+                    text: 'Modernised the toolchain: led the CRA to Vite and Moment.js to Day.js migrations, and introduced Vitest unit and integration testing to a codebase that had none.',
+                    short: 'Led the CRA to Vite migration and introduced testing to a codebase that had none.',
+                    featured: true,
                 },
                 {
-                    group: 'Frontend',
-                    text: 'Led CRA → Vite and Moment.js → Day.js migrations, modernizing the build toolchain and reducing bundle size.',
-                },
-                {
-                    group: 'Frontend',
-                    text: 'Introduced Vitest-based unit and integration testing; led large-scale legacy code removal reducing codebase surface and maintenance overhead.',
-                },
-                {
-                    group: 'Backend',
-                    text: 'Designed and implemented REST APIs and domain services in Spring Boot, covering planning, scheduling, and data-processing workflows across distributed microservices.',
+                    text: 'Ship beyond the frontend: Spring Boot REST services, a microservice built from scratch with OIDC auth and AWS Secrets Manager, Jenkins CI/CD with SonarQube gates, and Kubernetes via Helm.',
                     short: 'Ship beyond the frontend: Spring Boot services, Jenkins pipelines, Helm-managed Kubernetes.',
                     featured: true,
                 },
-                {
-                    group: 'Backend',
-                    text: 'Built validation and rule engines enforcing data integrity and real-time operational constraints across distributed services.',
-                },
-                {
-                    group: 'Backend',
-                    text: 'Bootstrapped a Spring Boot microservice from scratch: layered domain architecture, external API integrations, and secrets management via AWS Secrets Manager.',
-                },
-                {
-                    group: 'Backend',
-                    text: 'Refactored batch-scheduled job workflows into on-demand REST APIs, eliminating timing dependencies and giving operators direct execution control.',
-                },
-                {
-                    group: 'Backend',
-                    text: 'Implemented OIDC-based service-to-service authentication and integrated AWS Secrets Manager and STS for credential-free service configuration.',
-                },
-                {
-                    group: 'Backend',
-                    text: 'Contributed 100+ commits across backend services, delivering 30+ production features.',
-                },
-                {
-                    group: 'DevOps & Infrastructure',
-                    text: 'Built and maintained CI/CD pipelines in Jenkins with integrated code quality gates (SonarQube) and container vulnerability scanning (Trivy).',
-                },
-                {
-                    group: 'DevOps & Infrastructure',
-                    text: 'Managed Kubernetes deployments across dev and production clusters using Helm, including CronJob scheduling and per-environment service configuration.',
-                },
-                {
-                    group: 'DevOps & Infrastructure',
-                    text: 'Hardened containerized services with non-root Docker images and Kubernetes security contexts.',
-                },
-                {
-                    group: 'DevOps & Infrastructure',
-                    text: 'Instrumented services with Micrometer/Prometheus metrics and structured logging, enabling operational visibility across distributed deployments.',
-                },
             ],
-            stack: [
-                'React',
-                'TypeScript',
-                'Vite',
-                'Redux Toolkit',
-                'TanStack Query',
-                'MUI',
-                'Vitest',
-                'Java 17/21',
-                'Spring Boot',
-                'JPA/Hibernate',
-                'PostgreSQL',
-                'Kubernetes',
-                'Docker',
-                'Helm',
-                'AWS',
-                'Jenkins',
-            ],
+            stack: ['React', 'TypeScript', 'Vite', 'Redux Toolkit', 'TanStack Query', 'Vitest', 'Java 17/21', 'Spring Boot', 'AWS'],
         },
         {
             company: 'Skiper Technologies GmbH',
             role: 'Co-founder & Frontend Lead',
             period: '2022 - Present',
-            summary: 'One of three co-founders; sole owner of the entire frontend over 4+ years.',
+            summary: 'B2B restaurant reservation platform. One of three co-founders and sole owner of the entire frontend across web, embeddable widget and mobile.',
             summaryShort: 'Restaurant reservation platform. One of three co-founders, and the only frontend engineer on the product.',
             highlights: [
                 {
-                    text: 'Led frontend development from initial commit to production: 414 commits, ~108,000 net lines across 1,172 files as the sole frontend owner.',
-                    short: 'Took the frontend from first commit to production solo: 414 commits, ~108k lines, 10+ product domains.',
+                    text: 'Own the entire frontend from first commit to production across 10+ product domains: the web portal, an embeddable booking widget, and the React Native app.',
+                    short: 'Took the frontend from first commit to production solo, across 10+ product domains.',
                     featured: true,
                 },
                 {
-                    text: 'Owned end-to-end delivery across 10+ product domains in a React + TypeScript + TanStack Query SPA, from initial architecture through iterative feature releases.',
-                },
-                {
-                    text: 'Migrated from Create React App to Vite, reducing production build times from 52 seconds to 3 seconds (94% faster).',
-                    short: 'Cut production builds from 52s to 3s by migrating CRA to Vite.',
+                    text: 'Cut production builds from 52 seconds to 3 by migrating CRA to Vite, then restructured a 280-file flat codebase into a 5-layer Feature-Sliced architecture with ESLint-enforced boundaries. Now 559 files, zero cross-layer violations.',
+                    short: 'Cut builds 52s to 3s, and rebuilt 280 flat files as Feature-Sliced Design with zero violations since.',
                     featured: true,
                 },
                 {
-                    text: 'Refactored a 280-file flat codebase to a 5-layer Feature-Sliced Design architecture with 16 feature slices and ESLint-enforced import boundaries; codebase scaled to 559 files with zero cross-layer violations.',
-                    short: 'Rebuilt a 280-file flat codebase as 5-layer Feature-Sliced Design, with zero cross-layer violations since.',
+                    text: 'Shipped the React Native app solo to the App Store and Play Store: Expo, JWT in encrypted device storage with silent logout on token expiry, reCAPTCHA v3, and the full EAS release pipeline.',
+                    short: 'Built and shipped the React Native app solo to both app stores.',
                     featured: true,
                 },
                 {
-                    text: 'Designed and maintained a full i18n system across 3 languages, covering every product surface from authentication to core workflows.',
-                    short: 'Shipped the product in 3 languages, from authentication to core booking flows.',
+                    text: 'Migrated Material UI to a Tailwind design system: 37 primitives plus typed React Hook Form controllers reused across 37 routes.',
+                    short: 'Migrated MUI to a Tailwind design system, 37 primitives reused across 37 routes.',
                     featured: true,
                 },
                 {
-                    text: 'Introduced regression and integration test suites covering multi-tenant context, API payload contracts, and authentication flows.',
+                    text: 'Shipped the product in 3 languages, with CI checks that fail the build on missing translation keys.',
+                    short: 'Shipped the product in 3 languages, with CI that fails on missing translation keys.',
+                    featured: true,
                 },
             ],
-            stack: ['React', 'TypeScript', 'Vite', 'TanStack Query', 'shadcn/ui', 'Java Spring Boot', 'AWS'],
+            stack: ['React', 'TypeScript', 'React Native', 'Expo', 'Vite', 'TanStack Query', 'shadcn/ui', 'Tailwind', 'AWS'],
             link: 'https://reserve.skiper.io/en',
             imageUrl: '/images/skiper.webp',
         },
@@ -281,7 +216,7 @@ export const profile = {
             name: 'StackForm',
             role: 'Creator & Maintainer',
             period: '2026 - Present',
-            summary: 'Open-source headless form library for React: one component per field instead of 10-15 lines of shadcn/ui + React Hook Form boilerplate.',
+            summary: 'Open-source headless form library for React: one component per field instead of 10-15 lines of boilerplate. 7 packages on npm, adapter-agnostic across React Hook Form, TanStack Form and native state.',
             highlights: [
                 '7 packages on npm (@stackform/core plus adapters), v1.1.0 stable.',
                 'Adapter-agnostic: the same field API drives React Hook Form, TanStack Form, or native React state.',
