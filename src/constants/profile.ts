@@ -101,9 +101,9 @@ export const profile = {
     location: 'Tbilisi, Georgia (UTC+4)',
     headline: 'I build product systems that stay clear under scale: frontend architecture, backend services, and delivery.',
     summary:
-        'Frontend engineer with 5 years building operational software people use all day: planning and scheduling tools for an EU logistics platform, and a restaurant reservation product I co-founded, where I lead the frontend. I work at the architecture level. Recent work: production builds cut from 52s to 3s, a 280-file codebase restructured into a Feature-Sliced architecture with zero boundary violations, and a React Native app shipped to both app stores. Also ship Java/Spring Boot services.',
+        'Frontend engineer with 5 years building operational software people use all day: planning and scheduling tools for an EU logistics platform, and a restaurant reservation platform I co-founded, where I lead the frontend. Recent work: production builds cut from 52s to 3s, a React Native app shipped to both app stores and a 280-file codebase restructured into a Feature-Sliced architecture with zero boundary violations. I also ship Java/Spring Boot services.',
     summaryShort:
-        'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. At GSG, top contributor by commit volume on a live EU logistics platform while also delivering backend services and CI/CD pipelines. At Skiper, co-founder and frontend lead: architecture, platform migrations, and multilingual product delivery across a growing SaaS product.',
+        'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. At GSG, top contributor by commit volume on a live EU logistics platform while also delivering backend services and CI/CD pipelines. At Skiper, co-founder and frontend lead: architecture, platform migrations and multilingual product delivery across a growing SaaS product.',
     aboutTitle: 'Frontend-led fullstack engineer with product and platform depth',
     about: {
         intro: 'Frontend-led fullstack engineer with 5 years of experience and a co-founder credit. I build product systems that stay clear under scale.',
@@ -142,21 +142,21 @@ export const profile = {
             role: 'Senior Software Engineer',
             period: 'June 2021 - Present',
             summary:
-                'EU e-commerce logistics platform of 40+ Java/Spring microservices. Frontend lead in practice on a 5-engineer team. Backend across the services since May 2026, and now on the team planning the migration of two large Ext JS UIs to React.',
+                'EU e-commerce logistics platform of 40+ Java/Spring microservices. Frontend lead in practice on a 5-engineer team. On the backend services since May 2026, and now on the team planning the migration of two large Ext JS UIs to React.',
             summaryShort: 'EU logistics platform for e-commerce parcel routing and truck-line scheduling, live and used by operators across Europe.',
             highlights: [
                 {
-                    text: 'Built the core planning and scheduling interfaces (daily, weekly and historical views with dynamic filtering, forecasting and scenario comparison) that operations staff run the business on.',
+                    text: 'Built the core planning and scheduling interfaces (daily, weekly and historical views with filtering, forecasting and scenario comparison) that operations staff run the business on.',
                     short: 'Built the multi-view planning and scheduling tools operators use every day.',
                     featured: true,
                 },
                 {
-                    text: 'Set the frontend data-layer standard used across an 8-engineer team: Redux Toolkit for UI state, TanStack Query for server state, plus a shared cache-invalidation policy that ended a recurring class of stale-data bugs.',
+                    text: 'Set the frontend data-layer standard for the team, then 8 engineers: Redux Toolkit for UI state, TanStack Query for server state, plus a shared cache-invalidation policy that ended a recurring class of stale-data bugs.',
                     short: 'Set the frontend data-layer patterns the whole team builds on.',
                     featured: true,
                 },
                 {
-                    text: 'Built and maintained the shared component library (forms, tables, dialogs, filters) every frontend team builds on, removing duplicated UI across the platform.',
+                    text: 'Built and maintained the shared component library (forms, tables, dialogs, filters) the team builds on, removing duplicated UI across the platform.',
                     short: 'Built and maintain the shared component library used across the team.',
                     featured: true,
                 },
@@ -170,7 +170,7 @@ export const profile = {
                     featured: true,
                 },
                 {
-                    text: 'Raised unit-test coverage to a 70% standard across about 15 services, and wrote the tooling and prompts the team uses to generate tests.',
+                    text: 'Raised unit-test coverage to 70% across about 15 services, and wrote the tooling and prompts the team uses to generate tests.',
                     featured: true,
                 },
             ],
@@ -184,23 +184,23 @@ export const profile = {
             summaryShort: 'Restaurant reservation platform. One of three co-founders and frontend lead.',
             highlights: [
                 {
-                    text: 'Rebuilt the web portal in 2026 with a new design and a Feature-Sliced architecture, and lead the frontend across 10+ product domains: portal, embeddable booking widget and React Native app.',
-                    short: 'Rebuilt the portal in 2026 and lead the frontend across 10+ product domains.',
+                    text: 'Rebuilt the web portal in 2026 with a new design and a Feature-Sliced architecture. Frontend lead for the portal, the booking widget and the React Native app, 10+ product domains in all.',
+                    short: 'Rebuilt the portal in 2026. Frontend lead across 10+ product domains.',
                     featured: true,
                 },
                 {
-                    text: 'Cut production builds from 52 seconds to 3 by migrating CRA to Vite, then restructured a 280-file flat codebase into a 5-layer Feature-Sliced architecture with ESLint-enforced boundaries. Zero cross-layer violations.',
+                    text: 'Cut production builds from 52 seconds to 3 by migrating from CRA to Vite, then restructured a 280-file flat codebase into a Feature-Sliced architecture with ESLint-enforced boundaries. Zero cross-layer violations.',
                     short: 'Cut builds 52s to 3s, and rebuilt 280 flat files as Feature-Sliced Design with zero violations since.',
                     featured: true,
                 },
                 {
-                    text: 'Shipped the React Native app to the App Store and Play Store: Expo, JWT in encrypted device storage with silent logout on token expiry, reCAPTCHA v3, and the full EAS release pipeline.',
+                    text: 'Shipped the React Native app to the App Store and Play Store: Expo, JWT in encrypted device storage with silent logout on token expiry, reCAPTCHA v3 and the full EAS release pipeline.',
                     short: 'Built and shipped the React Native app to both app stores.',
                     featured: true,
                 },
                 {
-                    text: 'Migrated Material UI to a Tailwind design system: primitives plus typed React Hook Form controllers reused across routes.',
-                    short: 'Migrated MUI to a Tailwind design system, with primitives reused across routes.',
+                    text: 'Replaced Material UI with a Tailwind design system: primitives plus typed React Hook Form controllers.',
+                    short: 'Replaced MUI with a Tailwind design system, with primitives reused across routes.',
                     featured: true,
                 },
                 {
@@ -233,7 +233,7 @@ export const profile = {
             name: 'DevApply',
             role: 'Solo-built',
             period: '2026 - Present',
-            summary: 'Job application tracker for developers: Kanban pipeline, resume version management, follow-up reminders, and career analytics.',
+            summary: 'Job application tracker for developers: Kanban pipeline, resume version management, follow-up reminders and career analytics.',
             highlights: ['Built solo in a month.', 'The first version is online at devapply.app; a rewrite for a paid launch is in progress.'],
             stack: ['Next.js', 'Prisma', 'Neon', 'Clerk', 'PostHog', 'Resend'],
             link: 'https://devapply.app',
