@@ -142,7 +142,7 @@ export const profile = {
             role: 'Senior Software Engineer',
             period: 'June 2021 - Present',
             summary:
-                'EU e-commerce logistics platform of 40+ Java/Spring microservices. Frontend lead in practice on a 20+ engineer team. Backend across the services since May 2026, and now on the team planning the migration of two large Ext JS UIs to React.',
+                'EU e-commerce logistics platform of 40+ Java/Spring microservices. Frontend lead in practice on a 5-engineer team. Backend across the services since May 2026, and now on the team planning the migration of two large Ext JS UIs to React.',
             summaryShort: 'EU logistics platform for e-commerce parcel routing and truck-line scheduling, live and used by operators across Europe.',
             highlights: [
                 {
@@ -151,7 +151,7 @@ export const profile = {
                     featured: true,
                 },
                 {
-                    text: 'Set the frontend data-layer standard used across a 25+ engineer codebase: Redux Toolkit for UI state, TanStack Query for server state, plus a shared cache-invalidation policy that ended a recurring class of stale-data bugs.',
+                    text: 'Set the frontend data-layer standard used across an 8-engineer team: Redux Toolkit for UI state, TanStack Query for server state, plus a shared cache-invalidation policy that ended a recurring class of stale-data bugs.',
                     short: 'Set the frontend data-layer patterns the whole team builds on.',
                     featured: true,
                 },
