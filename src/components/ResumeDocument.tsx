@@ -1,41 +1,49 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { groupedHighlights, profile, skillGroupLine } from '#constants/profile'
 
 const pageClassName =
-    'resume-print-sheet resume-print-sheet-last mx-auto w-full max-w-[210mm] bg-white px-[14mm] pt-[10mm] pb-[8mm] text-[10pt] leading-[1.4] text-stone-900 shadow-[0_10px_30px_rgba(0,0,0,0.10)] print:max-w-none print:shadow-none'
+    'resume-print-sheet resume-print-sheet-last mx-auto flex w-full max-w-[210mm] flex-col gap-[8px] bg-white px-[46px] py-[40px] font-source-sans text-[11.5px] leading-[1.37] text-[#1a1a1a] shadow-[0_10px_30px_rgba(0,0,0,0.10)] max-md:px-[20px] print:max-w-none print:shadow-none'
 
-const dividerClassName = 'my-[3px] border-0 border-t border-stone-300'
-const sectionHeadingClassName = 'mb-[4px] text-[7.5pt] font-bold uppercase tracking-[0.09em] text-stone-500'
-const bodyTextClassName = 'text-[8.6pt] leading-[1.42] text-stone-900'
-const mutedTextClassName = 'text-[8.5pt] leading-[1.4] text-stone-600'
-const stackTextClassName = 'mt-[3px] text-[8pt] leading-[1.35] text-stone-500'
+const sectionClassName = 'flex flex-col gap-[4px]'
+const sectionHeadingClassName = 'font-source-serif text-[11.5px] leading-[1.3] font-bold uppercase tracking-[0.1em] text-[#1f3a5f]'
+const entryHeaderClassName = 'flex flex-wrap items-baseline justify-between gap-x-3'
+const entryTitleClassName = 'font-source-serif text-[13.5px] leading-[1.3] font-bold text-[#111111]'
+const entryDetailClassName = 'font-source-sans font-normal text-[#4a4a4a]'
+const metaTextClassName = 'shrink-0 whitespace-nowrap text-[11px] tabular-nums text-[#4a4a4a]'
+const mutedTextClassName = 'text-[#4a4a4a]'
+const stackTextClassName = 'text-[10.8px] text-[#5c5c5c]'
+
+const SectionHeading = ({ id, children }: { id: string; children: ReactNode }) => (
+    <div className="flex items-center gap-[10px]">
+        <h2 id={id} className={sectionHeadingClassName}>
+            {children}
+        </h2>
+        <span className="h-px flex-1 bg-[#bdbdbd]" aria-hidden="true" />
+    </div>
+)
 
 const ExperienceEntry = ({ entry }: { entry: (typeof profile.experience)[number] }) => (
-    <article className="resume-print-avoid mb-[9px] last:mb-0">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 className="text-[10pt] font-bold text-stone-900">
-                {entry.role} · {entry.company}
+    <article className="resume-print-avoid flex flex-col gap-[2px]">
+        <div className={entryHeaderClassName}>
+            <h3 className={entryTitleClassName}>
+                {entry.role} <span className={entryDetailClassName}>· {entry.company}</span>
             </h3>
-            <span className="shrink-0 whitespace-nowrap text-[8.2pt] text-stone-500">{entry.period}</span>
+            <span className={metaTextClassName}>{entry.period}</span>
         </div>
-        <p className={`${mutedTextClassName} mt-[1px] mb-[4px]`}>{entry.summary}</p>
+        <p className={`${mutedTextClassName} italic`}>{entry.summary}</p>
 
         {groupedHighlights(entry.highlights).map((section) => (
             <div key={section.title ?? 'ungrouped'} className="resume-print-avoid">
-                {section.title ? <p className="mb-[2px] mt-[5px] text-[7.4pt] font-bold uppercase tracking-[0.07em] text-stone-500">{section.title}</p> : null}
-                <ul className="list-disc pl-[14px]">
+                {section.title ? <p className="mb-[2px] mt-[3px] text-[10px] font-bold uppercase tracking-[0.07em] text-[#5c5c5c]">{section.title}</p> : null}
+                <ul className="flex list-disc flex-col gap-[1px] pl-[14px] marker:text-[#6b6b6b]">
                     {section.items.map((highlight) => (
-                        <li key={highlight.text} className={bodyTextClassName}>
-                            {highlight.text}
-                        </li>
+                        <li key={highlight.text}>{highlight.text}</li>
                     ))}
                 </ul>
             </div>
         ))}
 
-        <p className={stackTextClassName}>
-            <strong className="font-semibold text-stone-600">Stack:</strong> {entry.stack.join(' · ')}
-        </p>
+        <p className={stackTextClassName}>{entry.stack.join(' · ')}</p>
     </article>
 )
 
@@ -51,97 +59,83 @@ const ResumeDocument = ({ printMode = false }: { printMode?: boolean }) => {
     return (
         <div className={containerClassName}>
             <section className={pageClassName} style={pageStyle} aria-label="Resume">
-                <header className="mb-[5px]">
-                    <h1 className="text-[22pt] font-bold leading-[1.05] tracking-[-0.5px] text-stone-950">{profile.fullName}</h1>
-                    <p className="mt-[3px] text-[10.5pt] font-medium text-stone-600">
-                        {profile.role} · {profile.location}
-                    </p>
-                    <nav className="mt-[6px] flex flex-wrap gap-x-[18px] gap-y-[4px] text-[8.5pt] text-stone-600" aria-label="Contact links">
+                <header className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+                    <div className="flex flex-col gap-[3px]">
+                        <h1 className="font-source-serif text-[30px] leading-[1.05] font-bold tracking-[-0.3px] text-[#111111]">{profile.fullName}</h1>
+                        <p className={`${mutedTextClassName} text-[13.5px] leading-[1.3]`}>
+                            {profile.role} · {profile.location}
+                        </p>
+                    </div>
+                    {/* An address, not a nav: the global `nav` base style would add padding, a background and select-none. */}
+                    <address
+                        className={`${mutedTextClassName} grid w-[340px] max-w-full grid-cols-2 gap-x-4 gap-y-[2px] text-right text-[11px] leading-[1.35] not-italic max-md:text-left`}
+                        aria-label="Contact links"
+                    >
                         <span>ivakobalava.dev</span>
-                        <span>
-                            <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-inherit no-underline hover:underline">
-                                linkedin.com/in/iveri-kobalava
-                            </a>
-                        </span>
-                        <span>
-                            <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" className="text-inherit no-underline hover:underline">
-                                github.com/ivaiva89
-                            </a>
-                        </span>
+                        <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-inherit no-underline hover:underline">
+                            linkedin.com/in/iveri-kobalava
+                        </a>
+                        <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" className="text-inherit no-underline hover:underline">
+                            github.com/ivaiva89
+                        </a>
                         <span>{profile.contact.email}</span>
-                    </nav>
+                    </address>
                 </header>
 
-                <hr className={dividerClassName} />
+                <div className="h-[2px] bg-[#1f3a5f]" aria-hidden="true" />
 
-                <section aria-labelledby="resume-summary" className="mb-[5px]">
-                    <h2 id="resume-summary" className={sectionHeadingClassName}>
-                        Summary
-                    </h2>
-                    <p className="text-[8.7pt] leading-[1.48] text-stone-900">{profile.summary}</p>
+                <section aria-labelledby="resume-summary" className={sectionClassName}>
+                    <SectionHeading id="resume-summary">Summary</SectionHeading>
+                    <p className="text-pretty">{profile.summary}</p>
                 </section>
 
-                <hr className={dividerClassName} />
-
-                <section aria-labelledby="resume-skills" className="mb-[5px]">
-                    <h2 id="resume-skills" className={sectionHeadingClassName}>
-                        Skills
-                    </h2>
-                    <div className="flex flex-col gap-[3px]">
+                <section aria-labelledby="resume-skills" className={sectionClassName}>
+                    <SectionHeading id="resume-skills">Skills</SectionHeading>
+                    <div className="flex flex-col gap-[1px]">
                         {profile.skills.map((group) => (
-                            <p key={group.category} className={bodyTextClassName}>
-                                <strong className="font-semibold text-stone-900">{group.category}:</strong> <span className="text-stone-600">{skillGroupLine(group)}</span>
+                            <p key={group.category}>
+                                <strong className="font-semibold">{group.category}:</strong> <span className={mutedTextClassName}>{skillGroupLine(group)}</span>
                             </p>
                         ))}
                     </div>
                 </section>
 
-                <hr className={dividerClassName} />
-
-                <section aria-labelledby="resume-experience" className="mb-[5px]">
-                    <h2 id="resume-experience" className={sectionHeadingClassName}>
-                        Experience
-                    </h2>
-                    {profile.experience.map((entry) => (
-                        <ExperienceEntry key={entry.company} entry={entry} />
-                    ))}
+                <section aria-labelledby="resume-experience" className={sectionClassName}>
+                    <SectionHeading id="resume-experience">Experience</SectionHeading>
+                    <div className="flex flex-col gap-[9px]">
+                        {profile.experience.map((entry) => (
+                            <ExperienceEntry key={entry.company} entry={entry} />
+                        ))}
+                    </div>
                 </section>
 
-                <hr className={dividerClassName} />
-
-                <section aria-labelledby="resume-projects" className="resume-print-avoid mb-[5px]">
-                    <h2 id="resume-projects" className={sectionHeadingClassName}>
-                        Projects
-                    </h2>
-                    {profile.projects.map((project, index) => (
-                        <article key={project.name} className={index < profile.projects.length - 1 ? 'mb-[7px]' : ''}>
-                            <div className="flex items-baseline justify-between gap-2">
-                                <h3 className="text-[10pt] font-bold text-stone-900">
-                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-inherit no-underline">
-                                        {project.name}
-                                    </a>{' '}
-                                    · <span className="text-[9pt] font-normal">{project.link.replace(/^https?:\/\//, '')}</span>
-                                </h3>
-                                <span className="shrink-0 whitespace-nowrap text-[8.2pt] text-stone-500">
-                                    {project.period} · {project.role}
-                                </span>
-                            </div>
-                            <p className="mb-[3px] mt-[1px] text-[8.6pt] leading-[1.42] text-stone-900">{project.summary}</p>
-                            <p className="text-[8pt] text-stone-500">
-                                <strong className="font-semibold text-stone-600">Stack:</strong> {project.stack.join(' · ')}
-                            </p>
-                        </article>
-                    ))}
+                <section aria-labelledby="resume-projects" className={`resume-print-avoid ${sectionClassName}`}>
+                    <SectionHeading id="resume-projects">Projects</SectionHeading>
+                    <div className="flex flex-col gap-[8px]">
+                        {profile.projects.map((project) => (
+                            <article key={project.name} className="flex flex-col gap-[1px]">
+                                <div className={entryHeaderClassName}>
+                                    <h3 className={entryTitleClassName}>
+                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-inherit no-underline">
+                                            {project.name}
+                                        </a>{' '}
+                                        <span className={`${entryDetailClassName} text-[11.5px]`}>· {project.link.replace(/^https?:\/\//, '')}</span>
+                                    </h3>
+                                    <span className={metaTextClassName}>
+                                        {project.period} · {project.role}
+                                    </span>
+                                </div>
+                                <p>{project.summary}</p>
+                                <p className={stackTextClassName}>{project.stack.join(' · ')}</p>
+                            </article>
+                        ))}
+                    </div>
                 </section>
 
-                <hr className={dividerClassName} />
-
-                <section aria-labelledby="resume-education" className="resume-print-avoid">
-                    <h2 id="resume-education" className={sectionHeadingClassName}>
-                        Education
-                    </h2>
-                    <p className="text-[9.4pt] text-stone-900">
-                        <strong className="font-bold">{profile.education.institution}</strong> <span className="text-stone-600">· {profile.education.degree}</span>
+                <section aria-labelledby="resume-education" className={`resume-print-avoid ${sectionClassName}`}>
+                    <SectionHeading id="resume-education">Education</SectionHeading>
+                    <p>
+                        <strong className="font-semibold">{profile.education.institution}</strong> <span className={mutedTextClassName}>· {profile.education.degree}</span>
                     </p>
                 </section>
             </section>
